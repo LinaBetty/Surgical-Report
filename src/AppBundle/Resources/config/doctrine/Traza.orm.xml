@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Traza" table="traza">
+    <indexes>
+      <index name="IDX_AD36B8A0CC1F42C0" columns="usuario_fk"/>
+      <index name="IDX_AD36B8A0F1F2969D" columns="operacion_fk"/>
+    </indexes>
+    <id name="idTraza" type="integer" column="id_traza">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="traza_id_traza_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="accionRealizada" type="text" column="accion_realizada" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="fecha" type="date" column="fecha" nullable="true"/>
+    <field name="hora" type="time" column="hora" nullable="true"/>
+    <many-to-one field="operacionFk" target-entity="Operacion" fetch="LAZY">
+      <join-columns>
+        <join-column name="operacion_fk" referenced-column-name="id_operacion"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="usuarioFk" target-entity="Usuario" fetch="LAZY">
+      <join-columns>
+        <join-column name="usuario_fk" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

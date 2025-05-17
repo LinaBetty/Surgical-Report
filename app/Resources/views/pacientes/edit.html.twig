@@ -1,0 +1,269 @@
+{% extends 'operacion/new.html.twig' %}
+
+{% block title %}Editar Paciente{% endblock %}
+
+{% block body %}
+    {#<h1>Paciente creation</h1>#}
+
+    {#{{ form_start(form) }}#}
+    {#{{ form_widget(form) }}#}
+    {#<input type="submit" value="Create" />#}
+    {#{{ form_end(form) }}#}
+
+    {#<ul>#}
+    {#<li>#}
+    {#<a href="{{ path('pacientes_index') }}">Back to the list</a>#}
+    {#</li>#}
+    {#</ul>#}
+    <div class="basic-form-area mg-b-15" style="padding-top: 1%; padding-bottom: 2%">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="sparkline12-list">
+                        <div class="main-sparkline12-hd">
+                            <h1 style="font-size: 200%">Editar Paciente</h1>
+                            <br>
+                        </div>
+                        <div class="sparkline12-graph">
+                            <div class="basic-login-form-ad">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="all-form-element-inner">
+                                            {{ form_start(edit_form) }}
+                                            {%  if form_errors(edit_form)  != '' %}
+                                                <div class="alert alert-danger">
+                                                    {{ form_errors(edit_form) }}
+                                                </div>
+                                            {% endif %}
+                                            {% if app.session.flashBag.has('danger') %}
+                                                <div class="alert alert-danger">
+                                                    {% for msg in app.session.flashBag.get('danger') %}
+                                                        {{ msg }}
+                                                    {% endfor %}
+                                                </div>
+                                            {% endif %}
+                                            <div class="row" style="padding-bottom: 1%">
+                                                <div class="form-group-inner">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        {{ form_label(edit_form.ci) }}
+                                                        {%  if form_errors(edit_form.ci)  != '' %}
+                                                            <div class="alert alert-danger">
+                                                                {{ form_errors(edit_form.ci) }}
+                                                            </div>
+                                                        {% endif %}
+                                                        {{ form_widget(edit_form.ci , {'attr': {'class': 'form-control pull' , 'data-mask':'99999999999'}}) }}
+                                                        <span class="help-block">Debe contener 11 caracteres</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group-inner" style="margin-top: -3%">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        {{ form_label(edit_form.nombre) }}
+                                                        {%  if form_errors(edit_form.nombre)  != '' %}
+                                                            <div class="alert alert-danger">
+                                                                {{ form_errors(edit_form.nombre) }}
+                                                            </div>
+                                                        {% endif %}
+                                                        {{ form_widget(edit_form.nombre, {'attr': {'class': 'form-control' , 'onkeypress': 'return soloLetras(event)'}}) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="padding-bottom: 2%">
+                                                <div class="form-group-inner">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        {{ form_label(edit_form.primerApellido) }}
+                                                        {%  if form_errors(edit_form.primerApellido)  != '' %}
+                                                            <div class="alert alert-danger">
+                                                                {{ form_errors(edit_form.primerApellido) }}
+                                                            </div>
+                                                        {% endif %}
+                                                        {{ form_widget(edit_form.primerApellido, {'attr': {'class': 'form-control' , 'onkeypress': 'return soloLetras(event)'}}) }}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group-inner" style="margin-top: -3%">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        {{ form_label(edit_form.segundoApellido) }}
+                                                        {%  if form_errors(edit_form.segundoApellido)  != '' %}
+                                                            <div class="alert alert-danger">
+                                                                {{ form_errors(edit_form.segundoApellido) }}
+                                                            </div>
+                                                        {% endif %}
+                                                        {{ form_widget(edit_form.segundoApellido, {'attr': {'class': 'form-control' , 'onkeypress': 'return soloLetras(event)'}}) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="padding-bottom: 1%">
+                                                <div class="form-group-inner">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        {{ form_label(edit_form.historiaClinica) }}
+                                                        {%  if form_errors(edit_form.historiaClinica)  != '' %}
+                                                            <div class="alert alert-danger">
+                                                                {{ form_errors(edit_form.historiaClinica) }}
+                                                            </div>
+                                                        {% endif %}
+                                                        {{ form_widget(edit_form.historiaClinica , {'attr': {'class': 'form-control pull' , 'data-mask':'99999999999'}}) }}
+                                                        <span class="help-block">Debe contener 11 caracteres</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group-inner" style="margin-top: -3%">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        {{ form_label(edit_form.estadoCivilFk) }}
+                                                        {%  if form_errors(edit_form.estadoCivilFk)  != '' %}
+                                                            <div class="alert alert-danger">
+                                                                {{ form_errors(edit_form.estadoCivilFk) }}
+                                                            </div>
+                                                        {% endif %}
+                                                        <div class="form-select-list">
+                                                            {{ form_widget(edit_form.estadoCivilFk, {'attr': {'class': 'form-control custom-select-value'}}) }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="padding-bottom: 2%">
+                                                <div class="form-group-inner">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        {{ form_label(edit_form.razaFk) }}
+                                                        {%  if form_errors(edit_form.razaFk)  != '' %}
+                                                            <div class="alert alert-danger">
+                                                                {{ form_errors(edit_form.razaFk) }}
+                                                            </div>
+                                                        {% endif %}
+                                                        <div class="form-select-list">
+                                                            {{ form_widget(edit_form.razaFk, {'attr': {'class': 'form-control custom-select-value'}}) }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group-inner" style="margin-top: -3%">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        {{ form_label(edit_form.sexoFk) }}
+                                                        {%  if form_errors(edit_form.sexoFk)  != '' %}
+                                                            <div class="alert alert-danger">
+                                                                {{ form_errors(edit_form.sexoFk) }}
+                                                            </div>
+                                                        {% endif %}
+                                                        <div class="form-select-list">
+                                                            {{ form_widget(edit_form.sexoFk, {'attr': {'class': 'form-control custom-select-value'}}) }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="padding-bottom: 0%">
+                                                <div class="form-group-inner">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        {{ form_label(edit_form.provinciaFk) }}
+                                                        {%  if form_errors(edit_form.provinciaFk)  != '' %}
+                                                            <div class="alert alert-danger">
+                                                                {{ form_errors(edit_form.provinciaFk) }}
+                                                            </div>
+                                                        {% endif %}
+                                                        <div class="chosen-select-single mg-b-20">
+                                                            {{ form_widget(edit_form.provinciaFk, {'attr': {'class': 'chosen-select'}}) }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group-inner" style="margin-top: -3%">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        {{ form_label(edit_form.municipioFk) }}
+                                                        {%  if form_errors(edit_form.municipioFk)  != '' %}
+                                                            <div class="alert alert-danger">
+                                                                {{ form_errors(edit_form.municipioFk) }}
+                                                            </div>
+                                                        {% endif %}
+                                                        <div class="chosen-select-single mg-b-20">
+                                                            {{ form_widget(edit_form.municipioFk, {'attr': {'class': 'chosen-select'}}) }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="padding-bottom: 2%">
+                                                <div class="form-group-inner">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        {{ form_label(edit_form.direccion) }}
+                                                        {%  if form_errors(edit_form.direccion)  != '' %}
+                                                            <div class="alert alert-danger">
+                                                                {{ form_errors(edit_form.direccion) }}
+                                                            </div>
+                                                        {% endif %}
+                                                        {{ form_widget(edit_form.direccion, {'attr': {'class': 'form-control'}}) }}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group-inner" style="margin-top: -3%">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        {{ form_label(edit_form.grupoSanguineo) }}
+                                                        {%  if form_errors(edit_form.grupoSanguineo)  != '' %}
+                                                            <div class="alert alert-danger">
+                                                                {{ form_errors(edit_form.grupoSanguineo) }}
+                                                            </div>
+                                                        {% endif %}
+                                                        <div class="chosen-select-single mg-b-20">
+                                                            {{ form_widget(edit_form.grupoSanguineo, {'attr': {'class': 'chosen-select'}}) }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {#<input type="submit" value="Create"/>#}
+                                            <div class="form-group-inner">
+                                                <div class="login-btn-inner">
+                                                    <div class="row">
+                                                        <div class="col-lg-3"></div>
+                                                        <div class="col-lg-9">
+                                                            <div class="login-horizental cancel-wp pull-right form-bc-ele">
+                                                                <button class="btn btn-white"
+                                                                        href=""><a href="{{ path('pacientes_index') }}">Cancelar</a>
+                                                                </button>
+                                                                <button class="btn btn-sm btn-primary login-submit-cs"
+                                                                        type="submit" value="Create">Guardar
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{ form_end(edit_form) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <!-- chosen JS
+        ============================================ -->
+    <script src="{{ asset('js/chosen/chosen.jquery.js') }}"></script>
+    <script src="{{ asset('js/chosen/chosen-active.js') }}"></script>
+    <!-- select2 JS
+       ============================================ -->
+    <script src="{{ asset('js/select2/select2.full.min.js') }}"></script>
+    <script src="{{ asset('js/select2/select2-active.js') }}"></script>
+    <!-- touchspin JS
+       ============================================ -->
+    <script src="{{ asset('js/touchspin/jquery.bootstrap-touchspin.min.js') }}"></script>
+    <script src="{{ asset('js/touchspin/touchspin-active.js') }}"></script>
+    <!-- summernote JS
+        ============================================ -->
+    <script src="{{ asset('js/summernote/summernote.min.js') }}"></script>
+    <script src="{{ asset('js/summernote/summernote-active.js') }}"></script>
+    <!-- metisMenu JS
+    ============================================ -->
+    <script src="{{ asset('js/metisMenu/metisMenu.min.js') }}"></script>
+    <script src="{{ asset('js/metisMenu/metisMenu-active.js') }}"></script>
+
+    <script src="{{ asset('js/morrisjs/morris.js') }}"></script>
+    <script src="{{ asset('js/morrisjs/home3-active.js') }}"></script>
+    <!-- datapicker JS
+    ============================================ -->
+    <script src="{{ asset('js/datapicker/bootstrap-datepicker.js') }}"></script>
+    <script src="{{ asset('js/datapicker/datepicker-active.js') }}"></script>
+    <!-- input-mask JS
+    ============================================ -->
+    <script src="{{ asset('js/input-mask/jasny-bootstrap.min.js') }}"></script>
+
+{% endblock %}
+{% block graficos %}{% endblock %}

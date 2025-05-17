@@ -1,0 +1,34 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TipoPersonal
+ *
+ * @ORM\Table(name="tipo_personal")
+ * @ORM\Entity
+ */
+class TipoPersonal
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre", type="string", length=50, nullable=false)
+     */
+    private $nombre;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_tipo_personal", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="tipo_personal_id_tipo_personal_seq", allocationSize=1, initialValue=1)
+     */
+    private $idTipoPersonal;
+
+
+}
+

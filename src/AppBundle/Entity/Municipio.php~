@@ -1,0 +1,51 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Municipio
+ *
+ * @ORM\Table(name="municipio", indexes={@ORM\Index(name="IDX_FE98F5E0595620F1", columns={"provincia_fk"})})
+ * @ORM\Entity
+ */
+class Municipio
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre", type="string", length=1024, nullable=true)
+     */
+    private $nombre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre_provincia", type="string", length=1024, nullable=true)
+     */
+    private $nombreProvincia;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="municipio_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var \AppBundle\Entity\Provincia
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Provincia")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="provincia_fk", referencedColumnName="id")
+     * })
+     */
+    private $provinciaFk;
+
+
+}
+

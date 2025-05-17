@@ -1,0 +1,61 @@
+{% extends 'personal/index.html.twig' %}
+
+{% block title %}Mostrar Personal{% endblock %}
+
+{% block body %}
+    <div class="product-status mg-b-15" style="margin-top: 25px">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+                    <div class="product-status-wrap">
+                        {% if app.session.flashBag.has('danger') %}
+                            <div class="alert alert-success">
+                                {% for msg in app.session.flashBag.get('danger') %}
+                                    {{ msg }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        <h4>Mostrando {{ personal.nivelProfesionalFk.nombreCorto }} {{ personal.nombre }}</h4>
+                        {#{{ form_start(delete_form) }}#}
+                            {#<button class="btn btn-primary" type="submit" value="Delete" style="background-color: #006df0; border-color: #006df0; margin-left: 0% !important; margin-bottom: 1%">#}
+                                {#Eliminar Personal</button>#}
+                        {#{{ form_end(delete_form) }}#}
+                        <div class="asset-inner">
+                            <table>
+                                <tr>
+                                    <th>Nivel Profesional</th>
+                                    <td>{{ personal.nivelProfesionalFk.nombreCorto }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <td>{{ personal.nombre }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Registro Profesional</th>
+                                    <td>{{ personal.registroProfesional }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Estado</th>
+                                    <td>{% if personal.activo %}<button class="pd-setting">Activo</button>{% else %}<button class="ds-setting">Inactivo</button>{% endif %}</td>
+                                </tr>
+                                <tr>
+                                    <th>Tipo de Personal</th>
+                                    <td>{{ personal.tipoPersonalFk.nombre }}</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="custom-pagination">
+                            <ul class="pagination">
+                                <li class="page-item"><a class="page-link" href="{{ path('personal_edit', { 'idPersonal': personal.idPersonal }) }}">Editar Personal</a></li>
+                                <li class="page-item"><a class="page-link" href="{{ path('personal_new') }}">Agregar Personal</a></li>
+                                <li class="page-item"><a class="page-link" href="{{ path('personal_index') }}">Volver al Listado</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block graficos %}{% endblock %}

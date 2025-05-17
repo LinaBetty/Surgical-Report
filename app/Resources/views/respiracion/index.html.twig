@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Respiracions list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Idrespiracion</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for respiracion in respiracions %}
+            <tr>
+                <td><a href="{{ path('respiracion_show', { 'idRespiracion': respiracion.idRespiracion }) }}">{{ respiracion.nombre }}</a></td>
+                <td>{{ respiracion.idRespiracion }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('respiracion_show', { 'idRespiracion': respiracion.idRespiracion }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('respiracion_edit', { 'idRespiracion': respiracion.idRespiracion }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('respiracion_new') }}">Create a new respiracion</a>
+        </li>
+    </ul>
+{% endblock %}

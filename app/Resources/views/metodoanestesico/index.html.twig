@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Metodoanestesicos list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Nombrecorto</th>
+                <th>Idmetodoanestesico</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for metodoAnestesico in metodoAnestesicos %}
+            <tr>
+                <td><a href="{{ path('metodoanestesico_show', { 'idMetodoAnestesico': metodoAnestesico.idMetodoAnestesico }) }}">{{ metodoAnestesico.nombre }}</a></td>
+                <td>{{ metodoAnestesico.nombreCorto }}</td>
+                <td>{{ metodoAnestesico.idMetodoAnestesico }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('metodoanestesico_show', { 'idMetodoAnestesico': metodoAnestesico.idMetodoAnestesico }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('metodoanestesico_edit', { 'idMetodoAnestesico': metodoAnestesico.idMetodoAnestesico }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('metodoanestesico_new') }}">Create a new metodoAnestesico</a>
+        </li>
+    </ul>
+{% endblock %}

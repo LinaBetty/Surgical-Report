@@ -1,0 +1,269 @@
+{% extends 'operacion/new.html.twig' %}
+
+{% block title %}Nuevo Paciente{% endblock %}
+
+{% block body %}
+    {#<h1>Paciente creation</h1>#}
+
+    {#{{ form_start(form) }}#}
+    {#{{ form_widget(form) }}#}
+    {#<input type="submit" value="Create" />#}
+    {#{{ form_end(form) }}#}
+
+    {#<ul>#}
+    {#<li>#}
+    {#<a href="{{ path('pacientes_index') }}">Back to the list</a>#}
+    {#</li>#}
+    {#</ul>#}
+    <div class="basic-form-area mg-b-15" style="padding-top: 1%; padding-bottom: 2%">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="sparkline12-list">
+                        <div class="main-sparkline12-hd">
+                            <h1 style="font-size: 200%">Nuevo Paciente</h1>
+                            <br>
+                        </div>
+                        <div class="sparkline12-graph">
+                            <div class="basic-login-form-ad">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="all-form-element-inner">
+                                            {{ form_start(form) }}
+                                            {%  if form_errors(form)  != '' %}
+                                                <div class="alert alert-danger">
+                                                    {{ form_errors(form) }}
+                                                </div>
+                                            {% endif %}
+                                            {% if app.session.flashBag.has('danger') %}
+                                                <div class="alert alert-danger">
+                                                    {% for msg in app.session.flashBag.get('danger') %}
+                                                        {{ msg }}
+                                                    {% endfor %}
+                                                </div>
+                                            {% endif %}
+                                            <div class="row" style="padding-bottom: 1%">
+                                                <div class="form-group-inner">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        {{ form_label(form.ci) }}
+                                                        {%  if form_errors(form.ci)  != '' %}
+                                                        <div class="alert alert-danger">
+                                                        {{ form_errors(form.ci) }}
+                                                        </div>
+                                                        {% endif %}
+                                                        {{ form_widget(form.ci , {'attr': {'class': 'form-control pull' , 'data-mask':'99999999999'}}) }}
+                                                        <span class="help-block">Debe contener 11 caracteres</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group-inner" style="margin-top: -3%">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        {{ form_label(form.nombre) }}
+                                                        {%  if form_errors(form.nombre)  != '' %}
+                                                            <div class="alert alert-danger">
+                                                                {{ form_errors(form.nombre) }}
+                                                            </div>
+                                                        {% endif %}
+                                                        {{ form_widget(form.nombre, {'attr': {'class': 'form-control' , 'onkeypress': 'return soloLetras(event)'}}) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="padding-bottom: 2%">
+                                                <div class="form-group-inner">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        {{ form_label(form.primerApellido) }}
+                                                        {%  if form_errors(form.primerApellido)  != '' %}
+                                                            <div class="alert alert-danger">
+                                                                {{ form_errors(form.primerApellido) }}
+                                                            </div>
+                                                        {% endif %}
+                                                        {{ form_widget(form.primerApellido, {'attr': {'class': 'form-control' , 'onkeypress': 'return soloLetras(event)'}}) }}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group-inner" style="margin-top: -3%">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        {{ form_label(form.segundoApellido) }}
+                                                        {%  if form_errors(form.segundoApellido)  != '' %}
+                                                            <div class="alert alert-danger">
+                                                                {{ form_errors(form.segundoApellido) }}
+                                                            </div>
+                                                        {% endif %}
+                                                        {{ form_widget(form.segundoApellido, {'attr': {'class': 'form-control' , 'onkeypress': 'return soloLetras(event)'}}) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="padding-bottom: 0%">
+                                                <div class="form-group-inner">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        {{ form_label(form.historiaClinica) }}
+                                                        {%  if form_errors(form.historiaClinica)  != '' %}
+                                                            <div class="alert alert-danger">
+                                                                {{ form_errors(form.historiaClinica) }}
+                                                            </div>
+                                                        {% endif %}
+                                                        {{ form_widget(form.historiaClinica , {'attr': {'class': 'form-control pull' , 'data-mask':'99999999999'}}) }}
+                                                        <span class="help-block">Debe contener 11 caracteres</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group-inner" style="margin-top: -3%">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        {{ form_label(form.estadoCivilFk) }}
+                                                        {%  if form_errors(form.estadoCivilFk)  != '' %}
+                                                            <div class="alert alert-danger">
+                                                                {{ form_errors(form.estadoCivilFk) }}
+                                                            </div>
+                                                        {% endif %}
+                                                        <div class="form-select-list">
+                                                            {{ form_widget(form.estadoCivilFk, {'attr': {'class': 'form-control custom-select-value'}}) }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="padding-bottom: 2%; padding-top: -3%">
+                                                <div class="form-group-inner">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        {{ form_label(form.razaFk) }}
+                                                        {%  if form_errors(form.razaFk)  != '' %}
+                                                            <div class="alert alert-danger">
+                                                                {{ form_errors(form.razaFk) }}
+                                                            </div>
+                                                        {% endif %}
+                                                        <div class="form-select-list">
+                                                            {{ form_widget(form.razaFk, {'attr': {'class': 'form-control custom-select-value'}}) }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group-inner" style="margin-top: -3%">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        {{ form_label(form.sexoFk) }}
+                                                        {%  if form_errors(form.sexoFk)  != '' %}
+                                                            <div class="alert alert-danger">
+                                                                {{ form_errors(form.sexoFk) }}
+                                                            </div>
+                                                        {% endif %}
+                                                        <div class="form-select-list">
+                                                            {{ form_widget(form.sexoFk, {'attr': {'class': 'form-control custom-select-value'}}) }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="padding-bottom: 0%">
+                                                <div class="form-group-inner">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        {{ form_label(form.provinciaFk) }}
+                                                        {%  if form_errors(form.provinciaFk)  != '' %}
+                                                            <div class="alert alert-danger">
+                                                                {{ form_errors(form.provinciaFk) }}
+                                                            </div>
+                                                        {% endif %}
+                                                        <div class="chosen-select-single mg-b-20">
+                                                            {{ form_widget(form.provinciaFk, {'attr': {'class': 'chosen-select'}}) }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group-inner" style="margin-top: -3%">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        {{ form_label(form.municipioFk) }}
+                                                        {%  if form_errors(form.municipioFk)  != '' %}
+                                                            <div class="alert alert-danger">
+                                                                {{ form_errors(form.municipioFk) }}
+                                                            </div>
+                                                        {% endif %}
+                                                        <div class="chosen-select-single mg-b-20">
+                                                            {{ form_widget(form.municipioFk, {'attr': {'class': 'chosen-select'}}) }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="padding-bottom: 2%">
+                                                <div class="form-group-inner">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        {{ form_label(form.direccion) }}
+                                                        {%  if form_errors(form.direccion)  != '' %}
+                                                            <div class="alert alert-danger">
+                                                                {{ form_errors(form.direccion) }}
+                                                            </div>
+                                                        {% endif %}
+                                                            {{ form_widget(form.direccion, {'attr': {'class': 'form-control'}}) }}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group-inner" style="margin-top: -3%">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        {{ form_label(form.grupoSanguineo) }}
+                                                        {%  if form_errors(form.grupoSanguineo)  != '' %}
+                                                            <div class="alert alert-danger">
+                                                                {{ form_errors(form.grupoSanguineo) }}
+                                                            </div>
+                                                        {% endif %}
+                                                        <div class="chosen-select-single mg-b-20">
+                                                            {{ form_widget(form.grupoSanguineo, {'attr': {'class': 'chosen-select'}}) }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {#<input type="submit" value="Create"/>#}
+                                            <div class="form-group-inner">
+                                                <div class="login-btn-inner">
+                                                    <div class="row">
+                                                        <div class="col-lg-3"></div>
+                                                        <div class="col-lg-9">
+                                                            <div class="login-horizental cancel-wp pull-right form-bc-ele">
+                                                                <button class="btn btn-white"
+                                                                        href=""><a href="{{ path('pacientes_index') }}">Cancelar</a>
+                                                                </button>
+                                                                <button class="btn btn-sm btn-primary login-submit-cs"
+                                                                        type="submit" value="Create">Guardar
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{ form_end(form) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <!-- chosen JS
+        ============================================ -->
+    <script src="{{ asset('js/chosen/chosen.jquery.js') }}"></script>
+    <script src="{{ asset('js/chosen/chosen-active.js') }}"></script>
+    <!-- select2 JS
+       ============================================ -->
+    <script src="{{ asset('js/select2/select2.full.min.js') }}"></script>
+    <script src="{{ asset('js/select2/select2-active.js') }}"></script>
+    <!-- touchspin JS
+       ============================================ -->
+    <script src="{{ asset('js/touchspin/jquery.bootstrap-touchspin.min.js') }}"></script>
+    <script src="{{ asset('js/touchspin/touchspin-active.js') }}"></script>
+    <!-- summernote JS
+        ============================================ -->
+    <script src="{{ asset('js/summernote/summernote.min.js') }}"></script>
+    <script src="{{ asset('js/summernote/summernote-active.js') }}"></script>
+    <!-- metisMenu JS
+    ============================================ -->
+    <script src="{{ asset('js/metisMenu/metisMenu.min.js') }}"></script>
+    <script src="{{ asset('js/metisMenu/metisMenu-active.js') }}"></script>
+
+    <script src="{{ asset('js/morrisjs/morris.js') }}"></script>
+    <script src="{{ asset('js/morrisjs/home3-active.js') }}"></script>
+    <!-- datapicker JS
+    ============================================ -->
+    <script src="{{ asset('js/datapicker/bootstrap-datepicker.js') }}"></script>
+    <script src="{{ asset('js/datapicker/datepicker-active.js') }}"></script>
+    <!-- input-mask JS
+    ============================================ -->
+    <script src="{{ asset('js/input-mask/jasny-bootstrap.min.js') }}"></script>
+
+{% endblock %}
+{% block graficos %}{% endblock %}

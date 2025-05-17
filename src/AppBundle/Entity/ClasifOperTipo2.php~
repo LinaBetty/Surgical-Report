@@ -1,0 +1,34 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ClasifOperTipo2
+ *
+ * @ORM\Table(name="clasif_oper_tipo_2")
+ * @ORM\Entity
+ */
+class ClasifOperTipo2
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre", type="string", length=50, nullable=true)
+     */
+    private $nombre;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_clasif_oper_tipo_2", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="clasif_oper_tipo_2_id_clasif_oper_tipo_2_seq", allocationSize=1, initialValue=1)
+     */
+    private $idClasifOperTipo2;
+
+
+}
+

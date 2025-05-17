@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Personal" table="personal">
+    <indexes>
+      <index name="IDX_F18A6D847F4026EF" columns="tipo_personal_fk"/>
+      <index name="IDX_F18A6D847F6ACA99" columns="nivel_profesional_fk"/>
+    </indexes>
+    <id name="idPersonal" type="integer" column="id_personal">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="personal_id_personal_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="nombre" type="string" column="nombre" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="registroProfesional" type="string" column="registro_profesional" length="15" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="activo" type="boolean" column="activo" nullable="true"/>
+    <many-to-one field="nivelProfesionalFk" target-entity="NivelProfesional" fetch="LAZY">
+      <join-columns>
+        <join-column name="nivel_profesional_fk" referenced-column-name="nivel_profesional_id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="tipoPersonalFk" target-entity="TipoPersonal" fetch="LAZY">
+      <join-columns>
+        <join-column name="tipo_personal_fk" referenced-column-name="id_tipo_personal"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

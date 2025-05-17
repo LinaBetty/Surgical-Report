@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Salas list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Idsala</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sala in salas %}
+            <tr>
+                <td><a href="{{ path('sala_show', { 'idSala': sala.idSala }) }}">{{ sala.nombre }}</a></td>
+                <td>{{ sala.idSala }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('sala_show', { 'idSala': sala.idSala }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('sala_edit', { 'idSala': sala.idSala }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('sala_new') }}">Create a new sala</a>
+        </li>
+    </ul>
+{% endblock %}

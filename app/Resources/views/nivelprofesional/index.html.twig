@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Nivelprofesionals list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombrecorto</th>
+                <th>Nombrecompleto</th>
+                <th>Nivelprofesionalid</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for nivelProfesional in nivelProfesionals %}
+            <tr>
+                <td><a href="{{ path('nivelprofesional_show', { 'nivelProfesionalId': nivelProfesional.nivelProfesionalId }) }}">{{ nivelProfesional.nombreCorto }}</a></td>
+                <td>{{ nivelProfesional.nombreCompleto }}</td>
+                <td>{{ nivelProfesional.nivelProfesionalId }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('nivelprofesional_show', { 'nivelProfesionalId': nivelProfesional.nivelProfesionalId }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('nivelprofesional_edit', { 'nivelProfesionalId': nivelProfesional.nivelProfesionalId }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('nivelprofesional_new') }}">Create a new nivelProfesional</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Listado del Personal{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/data-table/bootstrap-table.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/data-table/bootstrap-editable.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/editor/select2.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/editor/datetimepicker.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/editor/bootstrap-editable.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/editor/x-editor-style.css') }}">
+{% endblock %}
+
+{% block body %}
+    <!-- Static Table Start -->
+    <div class="data-table-area mg-b-15" style="margin-top: 25px">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="sparkline13-list">
+                        <div class="sparkline13-hd">
+                            <div class="main-sparkline13-hd">
+                                <h1>Listado <span class="table-project-n">del</span> Personal</h1>
+                            </div>
+                        </div>
+                        <div class="sparkline13-graph">
+                            <div class="datatable-dashv1-list custom-datatable-overright">
+                                    <div class="add-product">
+                                        <a href="{{ path('personal_new') }}">Añadir Personal</a>
+                                    </div>
+                                <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true"
+                                       data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
+                                    <thead>
+                                    <tr>
+                                        <th data-field="name" data-editable="false">Nombre</th>
+                                        <th data-field="id">Registro Profesional</th>
+                                        <th data-field="task">Estado</th>
+                                        <th data-field="action">Acciones</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for personal in personals %}
+                                        <tr>
+                                            <td>{{ personal.nivelProfesionalFk.nombreCorto }} {{ personal.nombre }}</td>
+                                            <td>{{ personal.registroProfesional }}</td>
+                                            <td>{% if personal.activo %}<button class="btn-success">Activo</button>{% else %}<button class="btn-danger">Inactivo</button>{% endif %}</td>
+                                            {#<td>{{ personal.idPersonal }}</td>#}
+                                            <td>
+                                                <a href="{{ path('personal_show', { 'idPersonal': personal.idPersonal }) }}"><button data-toggle="tooltip" title="Show" class="pd-setting-ed"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a>
+                                                <a href="{{ path('personal_edit', { 'idPersonal': personal.idPersonal }) }}"><button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <!-- data table JS
+		============================================ -->
+    <script src="{{ asset('js/data-table/bootstrap-table.js') }}"></script>
+    <script src="{{ asset('js/data-table/tableExport.js') }}"></script>
+    <script src="{{ asset('js/data-table/data-table-active.js') }}"></script>
+    <script src="{{ asset('js/data-table/bootstrap-table-editable.js') }}"></script>
+    <script src="{{ asset('js/data-table/bootstrap-editable.js') }}"></script>
+    <script src="{{ asset('js/data-table/bootstrap-table-resizable.js') }}"></script>
+    <script src="{{ asset('js/data-table/colResizable-1.5.source.js') }}"></script>
+    <script src="{{ asset('js/data-table/bootstrap-table-export.js') }}"></script>
+    <!--  editable JS
+		============================================ -->
+    <script src="{{ asset('js/editable/jquery.mockjax.js') }}"></script>
+    <script src="{{ asset('js/editable/mock-active.js') }}"></script>
+    <script src="{{ asset('js/editable/select2.js') }}"></script>
+    <script src="{{ asset('js/editable/moment.min.js') }}"></script>
+    <script src="{{ asset('js/editable/bootstrap-datetimepicker.js') }}"></script>
+    <script src="{{ asset('js/editable/bootstrap-editable.js') }}"></script>
+    <script src="{{ asset('js/editable/xediable-active.js') }}"></script>
+    <!-- Chart JS
+		============================================ -->
+    <script src="{{ asset('js/chart/jquery.peity.min.js') }}"></script>
+    <script src="{{ asset('js/peity/peity-active.js') }}"></script>
+    <!-- tab JS
+		============================================ -->
+    <script src="{{ asset('js/tab.js') }}"></script>
+{% endblock %}
+{% block graficos %}{% endblock %}

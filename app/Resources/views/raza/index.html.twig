@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Razas list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Idraza</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for raza in razas %}
+            <tr>
+                <td><a href="{{ path('raza_show', { 'idRaza': raza.idRaza }) }}">{{ raza.nombre }}</a></td>
+                <td>{{ raza.idRaza }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('raza_show', { 'idRaza': raza.idRaza }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('raza_edit', { 'idRaza': raza.idRaza }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('raza_new') }}">Create a new raza</a>
+        </li>
+    </ul>
+{% endblock %}

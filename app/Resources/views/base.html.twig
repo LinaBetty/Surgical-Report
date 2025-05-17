@@ -1,0 +1,707 @@
+{#<!DOCTYPE html>#}
+{#<html>#}
+    {#<head>#}
+        {#<meta charset="UTF-8" />#}
+        {#<title>{% block title %}Welcome!{% endblock %}</title>#}
+        {#{% block stylesheets %}{% endblock %}#}
+        {#<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />#}
+    {#</head>#}
+    {#<body>#}
+        {#{% block body %}{% endblock %}#}
+        {#{% block javascripts %}{% endblock %}#}
+    {#</body>#}
+{#</html>#}
+
+
+<!doctype html>
+<html class="no-js" lang="en" moznomarginboxes mozdisallowselectionprint>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{% block title %}Inicio{% endblock %}</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block stylesheets %}
+        <!-- favicon
+            ============================================ -->
+        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/azul1.png') }}">
+        <!-- Google Fonts
+            ============================================ -->
+        {#<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">#}
+        <!-- Bootstrap CSS
+            ============================================ -->
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+        <!-- Bootstrap CSS
+            ============================================ -->
+        <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+        <!-- owl.carousel CSS
+            ============================================ -->
+        <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/owl.theme.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/owl.transitions.css') }}">
+        <!-- animate CSS
+            ============================================ -->
+        <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
+        <!-- normalize CSS
+            ============================================ -->
+        <link rel="stylesheet" href="{{ asset('css/normalize.css') }}">
+        <!-- meanmenu icon CSS
+            ============================================ -->
+        <link rel="stylesheet" href="{{ asset('css/meanmenu.min.css') }}">
+        <!-- main CSS
+            ============================================ -->
+        <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+        <!-- educate icon CSS
+            ============================================ -->
+        <link rel="stylesheet" href="{{ asset('css/educate-custon-icon.css') }}">
+        <!-- morrisjs CSS
+            ============================================ -->
+        <link rel="stylesheet" href="{{ asset('css/morrisjs/morris.css') }}">
+        <!-- mCustomScrollbar CSS
+            ============================================ -->
+        <link rel="stylesheet" href="{{ asset('css/scrollbar/jquery.mCustomScrollbar.min.css') }}">
+        <!-- metisMenu CSS
+            ============================================ -->
+        <link rel="stylesheet" href="{{ asset('css/metisMenu/metisMenu.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/metisMenu/metisMenu-vertical.css') }}">
+        <!-- calendar CSS
+            ============================================ -->
+        <link rel="stylesheet" href="{{ asset('css/calendar/fullcalendar.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/calendar/fullcalendar.print.min.css') }}">
+        <!-- style CSS
+            ============================================ -->
+        <link rel="stylesheet" href="{{ asset('style.css') }}">
+        <!-- responsive CSS
+            ============================================ -->
+        <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+        <!-- modernizr JS
+            ============================================ -->
+        <script src="{{ asset('js/vendor/modernizr-2.8.3.min.js') }}"></script>
+        <!-- Chart CSS
+		============================================ -->
+        <link rel="stylesheet" href="{{ asset('css/c3/c3.min.css') }}">
+    {% endblock %}
+</head>
+
+<body>
+<!--[if lt IE 8]>
+<p class="browserupgrade">Estas usando un navegardor <strong>desactualizado</strong> . Por favor <a
+        href="http://browsehappy.com/">actualize su navegador </a> para mejorar la experiencia.</p>
+<![endif]-->
+{% block sidebar %}
+    <!-- Start Left menu area -->
+    <div class="left-sidebar-pro">
+        <nav id="sidebar" class="">
+            <div class="sidebar-header">
+                <a href="{{ path('homepage') }}"><img class="main-logo" src="{{ asset('img/logo.jpg') }}" alt=""
+                                          style="width: 200px; height: 70px"/></a>
+                <strong><a href="{{ path('homepage') }}"><img src="{{ asset('img/azul1.png') }}" alt="" style="width: 80px; height: 60px; margin-top: -10%; padding-left: 1%;padding-right: 1%"/></a></strong>
+                {#<hr style="margin-top: 0%; color: #006df0; border-color: #006df0">#}
+            </div>
+            <div class="left-custom-menu-adp-wrap comment-scrollbar">
+                <nav class="sidebar-nav left-sidebar-menu-pro">
+                    <ul class="metismenu" id="menu1">
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li class="active">
+                                <a class="has-arrow" href="index.html">
+                                    {#<span class="educate-icon educate-professor icon-wrap"></span>#}
+                                    <i class="fa fa-user-md edu-avatar"></i>
+                                    <span class="mini-click-non">Personal</span>
+                                </a>
+                                <ul class="submenu-angle" aria-expanded="true">
+                                    <li><a title="Mostrar toda información perteneciente al personal del hospital"
+                                           href="{{ path('personal_index') }}"><span
+                                                    class="mini-sub-pro">Listar</span></a></li>
+                                    <li><a title="Insertar un nuevo trabajador al sistema"
+                                           href="{{ path('personal_new') }}"><span
+                                                    class="mini-sub-pro">Insertar</span></a></li>
+                                </ul>
+                            </li>
+                            <li class="active">
+                                <a class="has-arrow" href="index.html">
+                                    {#<span class="educate-icon educate-professor icon-wrap"></span>#}
+                                    <i class="fa fa-user-plus edu-avatar"></i>
+                                    <span class="mini-click-non">Cuentas</span>
+                                </a>
+                                <ul class="submenu-angle" aria-expanded="true">
+                                    <li>
+                                        <a title="Mostrar toda información perteneciente a las cuentas de acceso al sistema"
+                                           href="{{ path('usuario_index') }}"><span
+                                                    class="mini-sub-pro">Listar</span></a></li>
+                                    <li><a title="Insertar una nueva cuenta de acceso al sistema"
+                                           href="{{ path('usuario_new') }}"><span
+                                                    class="mini-sub-pro">Registrar</span></a></li>
+                                </ul>
+                            </li>
+                            <li class="active">
+                                <a href="{{ path('traza_index') }}" title="Mostrar un registro de las trazas del sistema">
+                                    {#<span class="educate-icon educate-professor icon-wrap"></span>#}
+                                    <i class="fa fa-tasks edu-avatar"></i>
+                                    <span class="mini-click-non">Trazas</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        {#<li>#}
+                        {#<a title="Landing Page" href="events.html" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Event</span></a>#}
+                        {#</li>#}
+                        {% if is_granted('ROLE_MEDICO') %}
+                            <li class="active">
+                                <a class="has-arrow" href="all-professors.html" aria-expanded="false">
+                                    {#<span class="educate-icon educate-professor icon-wrap"></span> #}
+                                    <i class="fa fa-user-secret edu-avatar"></i>
+                                    <span class="mini-click-non">Pacientes</span></a>
+                                <ul class="submenu-angle" aria-expanded="false">
+                                    <li><a title="Mostrar toda información perteneciente a los pacientes operados"
+                                           href="{{ path('pacientes_index') }}"><span
+                                                    class="mini-sub-pro">Listar</span></a></li>
+                                    <li><a title="Insertar un nuevo paciente al sistema"
+                                           href="{{ path('pacientes_new') }}"><span
+                                                    class="mini-sub-pro">Insertar</span></a></li>
+                                </ul>
+                            </li>
+                            <li class="active">
+                                <a class="has-arrow" href="all-students.html" aria-expanded="false">
+                                    {#<span class="educate-icon educate-form icon-wrap"></span> #}
+                                    <i class="fa fa-bed edu-avatar"></i>
+                                    <span class="mini-click-non">Operaciones</span></a>
+                                <ul class="submenu-angle" aria-expanded="false">
+                                    <li><a title="Mostrar toda información perteneciente a las operaciones realizadas"
+                                           href="{{ path('operacion_index') }}"><span class="mini-sub-pro">Listar</span></a>
+                                    </li>
+                                    <li><a title="Insertar un nueva operacion al sistema"
+                                           href="{{ path('operacion_new') }}"><span
+                                                    class="mini-sub-pro">Insertar</span></a></li>
+                                </ul>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </nav>
+    </div>
+    <!-- End Left menu area -->
+{% endblock %}
+
+
+<!-- Start Welcome area -->
+<div class="all-content-wrapper">
+    {% block navbar %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="logo-pro" style="">
+                    <a href="{{ path('homepage') }}"><img class="main-logo" src="{{ asset('img/logo4.jpg') }}" alt="" style="width: 200px; height: 60px"/></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-advance-area">
+        <div class="header-top-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="header-top-wraper">
+                            <div class="row">
+                                <div class="col-lg-1 col-md-0 col-sm-1 col-xs-12">
+                                    <div class="menu-switcher-pro">
+                                        <button type="button" id="sidebarCollapse"
+                                                class="btn bar-button-pro header-drl-controller-btn btn-info navbar-btn">
+                                            <i class="educate-icon educate-nav"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
+                                    <div class="header-top-menu tabl-d-n">
+                                        <ul class="nav navbar-nav mai-top-nav">
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                                    <div class="header-right-info">
+                                        <ul class="nav navbar-nav mai-top-nav header-right-menu">
+                                            <li class="nav-item dropdown">
+                                            </li>
+                                            <li class="nav-item">
+                                            </li>
+                                            <li class="nav-item" style="padding-right: 3px">
+                                                <a href="#" data-toggle="dropdown" role="button" aria-expanded="false"
+                                                   class="nav-link dropdown-toggle" style="padding-right:3px">
+                                                    {#<img src="img/product/pro4.jpg" alt="" />#}
+                                                    {% if is_granted('ROLE_MEDICO') %}
+                                                        <i class="fa fa-user-md edu-avatar"
+                                                           style="padding-right: 3px"></i>
+                                                    {% endif %}
+                                                    {% if is_granted('ROLE_ADMIN') %}
+                                                        <i class="fa fa-user-secret edu-avatar"
+                                                           style="padding-right: 3px"></i>
+                                                    {% endif %}
+                                                    <span class="admin-name">{{ app.user.personalFk.nivelProfesionalFk.nombreCorto }} {{ app.user.personalFk.nombre }}</span>
+                                                    <i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
+                                                </a>
+                                                <ul role="menu"
+                                                    class="dropdown-header-top author-log dropdown-menu animated zoomIn">
+                                                    {% if is_granted('ROLE_ADMIN') %}
+                                                        {#<li><a href="{{ path('register') }}"><span#}
+                                                        {#class="fa fa-user-plus"#}
+                                                        {#style="padding-right: 7px"></span>Registrarse</a>#}
+                                                        {#</li>#}
+                                                        <li><a href="{{ path('cerrarsesion') }}"><span
+                                                                        class="fa fa-user-times"
+                                                                        style="padding-right: 7px"></span>Cerrar
+                                                                Sesión</a>
+                                                        </li>
+                                                        <li><a href="{{ path('usuario_edit', { 'id': app.user.id }) }}"><span
+                                                                        class="fa fa-user"
+                                                                        style="padding-right: 7px"></span>
+                                                                Editar Usuario</a>
+                                                        </li>
+                                                    {% endif %}
+
+                                                    {% if is_granted('ROLE_MEDICO') %}
+                                                        <li><a href="{{ path('cerrarsesion') }}"><span
+                                                                        class="fa fa-user-times"
+                                                                        style="padding-right: 7px"></span>Cerrar
+                                                                Sesión</a>
+                                                        </li>
+                                                        <li><a href="{{ path('usuario_edit', { 'id': app.user.id }) }}"><span
+                                                                        class="fa fa-user"
+                                                                        style="padding-right: 7px"></span>
+                                                                Editar Usuario</a>
+                                                        </li>
+                                                    {% endif %}
+
+                                                </ul>
+                                            </li>
+                                            <li class="nav-item nav-setting-open">
+
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+        {% block mobilemenu %}
+            <!-- Mobile Menu start -->
+            <div class="mobile-menu-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="mobile-menu">
+                                <nav id="dropdown">
+                                    <ul class="mobile-menu-nav">
+                                        {% if is_granted('ROLE_ADMIN') %}
+                                            <li><a data-toggle="collapse" data-target="#Charts" href="#">Personal <span
+                                                            class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                                <ul class="collapse dropdown-header-top">
+                                                    <li><a href="{{ path('personal_index') }}">Listar</a></li>
+                                                    <li><a href="{{ path('personal_new') }}">Insertar </a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a data-toggle="collapse" data-target="#Charts" href="#">Cuentas <span
+                                                            class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                                <ul class="collapse dropdown-header-top">
+                                                    <li><a href="{{ path('usuario_index') }}">Listar</a></li>
+                                                    <li><a href="{{ path('usuario_new') }}">Insertar </a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a data-toggle="collapse" data-target="#demopro" href="{{ path('traza_index') }}">Trazas
+                                                    <span
+                                                            class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                            </li>
+                                        {% endif %}
+                                        {#<li><a href="events.html">Event</a></li>#}
+                                        {% if is_granted('ROLE_MEDICO') %}
+                                            <li><a data-toggle="collapse" data-target="#demoevent" href="{{ path('pacientes_index') }}">Pacientes
+                                                    <span
+                                                            class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                                <ul id="demoevent" class="collapse dropdown-header-top">
+                                                    <li><a href="{{ path('pacientes_index') }}">Listar</a>
+                                                    </li>
+                                                    <li><a href="{{ path('pacientes_new') }}">Insertar</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li><a data-toggle="collapse" data-target="#demopro" href="{{ path('operacion_index') }}">Operaciones
+                                                    <span
+                                                            class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                                <ul id="demopro" class="collapse dropdown-header-top">
+                                                    <li><a href="{{ path('operacion_index') }}">Listar</a>
+                                                    </li>
+                                                    <li><a href="{{ path('operacion_new') }}">Insertar</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        {% endif %}
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile Menu end -->
+        {% endblock %}
+    </div>
+
+    {% block body %}
+        <div class="analytics-sparkle-area" style="margin-top: 2%">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                        <div class="analytics-sparkle-line reso-mg-b-30">
+                            <div class="analytics-content">
+                                <h5>Operados entre 20-40 años</h5>
+                                <h2><span class="counter">{{ cant20 }}</span> <span class="tuition-fees">Personas</span></h2>
+                                <span class="text-success">{{ cant20*100/cantOper }}%</span>
+                                <div class="progress m-b-0">
+                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:{{ cant20*100/cantOper }}%;"> <span class="sr-only">{{ cant20*100/cantOper }}% Complete</span> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                        <div class="analytics-sparkle-line reso-mg-b-30">
+                            <div class="analytics-content">
+                                <h5>Operados entre 41-60 años</h5>
+                                <h2><span class="counter">{{ cant41 }}</span> <span class="tuition-fees">Personas</span></h2>
+                                <span class="text-danger">{{ cant41*100/cantOper }}%</span>
+                                <div class="progress m-b-0">
+                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:{{ cant41*100/cantOper }}%;"> <span class="sr-only">{{ cant41*100/cantOper }}% Complete</span> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                        <div class="analytics-sparkle-line reso-mg-b-30 table-mg-t-pro dk-res-t-pro-30">
+                            <div class="analytics-content">
+                                <h5>Operados entre 61-80 años</h5>
+                                <h2><span class="counter">{{ cant61 }}</span> <span class="tuition-fees">Personas</span></h2>
+                                <span class="text-info">{{ cant61*100/cantOper }}%</span>
+                                <div class="progress m-b-0">
+                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:{{ cant61*100/cantOper }}%;"> <span class="sr-only">{{ cant61*100/cantOper }}% Complete</span> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                        <div class="analytics-sparkle-line table-mg-t-pro dk-res-t-pro-30">
+                            <div class="analytics-content">
+                                <h5>Operados con más de 81 años</h5>
+                                <h2><span class="counter">{{ cant81 }}</span> <span class="tuition-fees">Personas</span></h2>
+                                <span class="text-inverse">{{ cant81*100/cantOper }}%</span>
+                                <div class="progress m-b-0">
+                                    <div class="progress-bar progress-bar-inverse" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:{{ cant81*100/cantOper }}%;"> <span class="sr-only">{{ cant81*100/cantOper }}% Complete</span> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- custom chart start-->
+        <div class="pie-bar-line-area mg-t-30 mg-b-15">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="sparkline11-list">
+                            <div class="sparkline11-hd">
+                                <div class="main-sparkline11-hd">
+                                    <h1>Total de pacientes operados <span class="c3-ds-n">Hombres</span></h1>
+                                </div>
+                            </div>
+                            <div class="sparkline11-graph">
+                                <div id="gauge"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="sparkline11-list">
+                            <div class="sparkline11-hd">
+                                <div class="main-sparkline11-hd">
+                                    <h1>Total de pacientes operados <span class="c3-ds-n">Mujeres</span></h1>
+                                </div>
+                            </div>
+                            <div class="sparkline11-graph">
+                                <div id="gauge2"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="sparkline11-list">
+                            <div class="sparkline11-hd">
+                                <div class="main-sparkline11-hd">
+                                    <h1>Total de operados <span class="c3-ds-n">Satisfactoriamente</span></h1>
+                                </div>
+                            </div>
+                            <div class="sparkline11-graph">
+                                <div id="gauge3"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- custom chart end-->
+        <!-- custom chart start-->
+        <div class="pie-bar-line-area" style="margin-bottom: 5%">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="sparkline9-list responsive-mg-b-30">
+                            <div class="sparkline9-hd">
+                                <div class="main-sparkline9-hd">
+                                    <h1>Cantidad de pacientes operados por <span class="c3-ds-n">Municipio</span></h1>
+                                </div>
+                            </div>
+                            <div class="sparkline9-graph">
+                                <div id="stocked"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="sparkline10-list">
+                            <div class="sparkline10-hd">
+                                <div class="main-sparkline10-hd">
+                                    <h1>Total de operaciones por <span class="c3-ds-n">Cirujano</span></h1>
+                                </div>
+                            </div>
+                            <div class="sparkline10-graph">
+                                <div id="pie"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- custom chart end-->
+    {% endblock %}
+
+
+    {% block footer %}
+        <div class="footer-copyright-area " style="position: fixed;  left: 0;  bottom: 0;  width: 100%">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="footer-copy-right">
+                            <p><i class="fa fa-copyright"></i> Hecho por Lina Beatriz Uribazo Mallo 2019-2020</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+</div>
+
+{% block javascripts %}
+    <!-- jquery
+        ============================================ -->
+    <script src="{{ asset('js/vendor/jquery-1.12.4.min.js') }}"></script>
+    <!-- bootstrap JS
+        ============================================ -->
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <!-- wow JS
+        ============================================ -->
+    <script src="{{ asset('js/wow.min.js') }}"></script>
+    <!-- price-slider JS
+        ============================================ -->
+    <script src="{{ asset('js/jquery-price-slider.js') }}"></script>
+    <!-- meanmenu JS
+        ============================================ -->
+    <script src="{{ asset('js/jquery.meanmenu.js') }}"></script>
+    <!-- owl.carousel JS
+        ============================================ -->
+    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+    <!-- sticky JS
+        ============================================ -->
+    <script src="{{ asset('js/jquery.sticky.js') }}"></script>
+    <!-- scrollUp JS
+        ============================================ -->
+    <script src="{{ asset('js/jquery.scrollUp.min.js') }}"></script>
+    <!-- counterup JS
+        ============================================ -->
+    <script src="{{ asset('js/counterup/jquery.counterup.min.js') }}"></script>
+    <script src="{{ asset('js/counterup/waypoints.min.js') }}"></script>
+    <script src="{{ asset('js/counterup/counterup-active.js') }}"></script>
+    <!-- mCustomScrollbar JS
+        ============================================ -->
+    <script src="{{ asset('js/scrollbar/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+    <script src="{{ asset('js/scrollbar/mCustomScrollbar-active.js') }}"></script>
+    <!-- metisMenu JS
+        ============================================ -->
+    <script src="{{ asset('js/metisMenu/metisMenu.min.js') }}"></script>
+    <script src="{{ asset('js/metisMenu/metisMenu-active.js') }}"></script>
+    <!-- morrisjs JS
+        ============================================ -->
+    <script src="{{ asset('js/morrisjs/raphael-min.js') }}"></script>
+    <script src="{{ asset('js/morrisjs/morris.js') }}"></script>
+    <script src="{{ asset('js/morrisjs/home3-active.js') }}"></script>
+    <!-- morrisjs JS
+        ============================================ -->
+    <script src="{{ asset('js/sparkline/jquery.sparkline.min.js') }}"></script>
+    <script src="{{ asset('js/sparkline/jquery.charts-sparkline.js') }}"></script>
+    <script src="{{ asset('js/sparkline/sparkline-active.js') }}"></script>
+    <!-- calendar JS
+        ============================================ -->
+    <script src="{{ asset('js/calendar/moment.min.js') }}"></script>
+    <script src="{{ asset('js/calendar/fullcalendar.min.js') }}"></script>
+    <script src="{{ asset('js/calendar/fullcalendar-active.js') }}"></script>
+    <!-- plugins JS
+        ============================================ -->
+    <script src="{{ asset('js/plugins.js') }}"></script>
+    <!-- main JS
+        ============================================ -->
+    <script src="{{ asset('js/main.js') }}"></script>
+    <!-- tawk chat JS
+        ============================================ -->
+    <script src="{{ asset('js/tawk-chat.js') }}"></script>
+    <!-- c3 JS
+		============================================ -->
+    <script src="{{ asset('js/c3-charts/d3.min.js') }}"></script>
+    <script src="{{ asset('js/c3-charts/c3.min.js') }}"></script>
+    <script src="{{ asset('js/c3-charts/c3-active.js') }}"></script>
+    <!-- tab JS
+		============================================ -->
+    <script src="{{ asset('js/tab.js') }}"></script>
+
+    <script>
+        function soloLetras(e) {
+            key = e.keyCode || e.which;
+            tecla = String.fromCharCode(key).toLowerCase();
+            letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+            especiales = "8-37-39-46";
+
+            tecla_especial = false
+            for (var i in especiales) {
+                if (key == especiales[i]) {
+                    tecla_especial = true;
+                    break;
+                }
+            }
+
+            if (letras.indexOf(tecla) == -1 && !tecla_especial) {
+                return false;
+            }
+        }
+    </script>
+
+    <script>
+        function soloNumeros(e) {
+            key = e.keyCode || e.which;
+            tecla = String.fromCharCode(key).toLowerCase();
+            letras = " 0123456789";
+            especiales = "8-37-39-46";
+
+            tecla_especial = false
+            for (var i in especiales) {
+                if (key == especiales[i]) {
+                    tecla_especial = true;
+                    break;
+                }
+            }
+
+            if (letras.indexOf(tecla) == -1 && !tecla_especial) {
+                return false;
+            }
+        }
+    </script>
+
+{% endblock %}
+
+{% block graficos %}
+<script>
+    c3.generate({
+        bindto: '#gauge',
+        data:{
+            columns: [
+                ['Hombres', {{ cantH*100/cantOper }}]
+            ],
+
+            type: 'gauge'
+        },
+        color:{
+            pattern: ['#006DF0', '#933EC5']
+
+        }
+    });
+    c3.generate({
+        bindto: '#gauge2',
+        data:{
+            columns: [
+                ['Mujeres', {{ cantM*100/cantOper }}]
+            ],
+
+            type: 'gauge'
+        },
+        color:{
+            pattern: ['#006DF0', '#933EC5']
+
+        }
+    });
+
+    c3.generate({
+        bindto: '#gauge3',
+        data:{
+            columns: [
+                ['Operados Satisfactoriamente', {{ cantSatis*100/cantOper }}]
+            ],
+
+            type: 'gauge'
+        },
+        color:{
+            pattern: ['#006DF0', '#933EC5']
+
+        }
+    });
+
+    c3.generate({
+        bindto: '#stocked',
+        data:{
+            columns: [
+                ['{{ municipios[0].nombre }}', {{ operPorMunicipio[0] }},0,0,0,0,0,0,0,0],
+                ['{{ municipios[1].nombre }}', 0,{{ operPorMunicipio[1] }},0,0,0,0,0,0,0],
+                ['{{ municipios[2].nombre }}', 0,0,{{ operPorMunicipio[2] }},0,0,0,0,0,0],
+                ['{{ municipios[3].nombre }}', 0,0,0,{{ operPorMunicipio[3] }},0,0,0,0,0],
+                ['{{ municipios[4].nombre }}', 0,0,0,0,{{ operPorMunicipio[4] }},0,0,0,0],
+                ['{{ municipios[5].nombre }}', 0,0,0,0,0,{{ operPorMunicipio[5] }},0,0,0],
+                ['{{ municipios[6].nombre }}', 0,0,0,0,0,0,{{ operPorMunicipio[6] }},0,0],
+                ['{{ municipios[7].nombre }}', 0,0,0,0,0,0,0,{{ operPorMunicipio[7] }},0],
+                ['{{ municipios[8].nombre }}', 0,0,0,0,0,0,0,0,{{ operPorMunicipio[8] }}],
+
+            ],
+            colors:{
+                data1: '#006DF0',
+                data2: '#933EC5'
+            },
+            type: 'bar',
+            groups: [
+                ['data1', 'data2']
+            ]
+        }
+    });
+
+    c3.generate({
+        bindto: '#pie',
+        data:{
+            columns: [
+                {% for cirujano in cirujanos %}
+                ['{{ cirujano.nombre }}', {{ operPorCirujano[loop.index-1] }}],
+                {% endfor %}
+            ],
+            colors:{
+
+            },
+            type : 'pie'
+        }
+    });
+</script>
+{% endblock %}
+
+</body>
+
+</html>

@@ -1,0 +1,204 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Operacionmodif</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Folio</th>
+                <td>{{ operacionModif.folio }}</td>
+            </tr>
+            <tr>
+                <th>Edadpaciente</th>
+                <td>{{ operacionModif.edadPaciente }}</td>
+            </tr>
+            <tr>
+                <th>Salon</th>
+                <td>{{ operacionModif.salon }}</td>
+            </tr>
+            <tr>
+                <th>Reintervencion</th>
+                <td>{{ operacionModif.reintervencion }}</td>
+            </tr>
+            <tr>
+                <th>Cirugiacardiacaprevia</th>
+                <td>{{ operacionModif.cirugiaCardiacaPrevia }}</td>
+            </tr>
+            <tr>
+                <th>Numerocirugiaprevia</th>
+                <td>{{ operacionModif.numeroCirugiaPrevia }}</td>
+            </tr>
+            <tr>
+                <th>Descripcionactooperatorio</th>
+                <td>{{ operacionModif.descripcionActoOperatorio }}</td>
+            </tr>
+            <tr>
+                <th>Accidentesocurridos</th>
+                <td>{{ operacionModif.accidentesOcurridos }}</td>
+            </tr>
+            <tr>
+                <th>Pensamientoaortico</th>
+                <td>{{ operacionModif.pensamientoAortico }}</td>
+            </tr>
+            <tr>
+                <th>Tparoanoxico</th>
+                <td>{{ operacionModif.tparoAnoxico }}</td>
+            </tr>
+            <tr>
+                <th>Tbypasstotal</th>
+                <td>{{ operacionModif.tbypassTotal }}</td>
+            </tr>
+            <tr>
+                <th>Tbypassparcial</th>
+                <td>{{ operacionModif.tbypassParcial }}</td>
+            </tr>
+            <tr>
+                <th>Tbypassapoyo</th>
+                <td>{{ operacionModif.tbypassApoyo }}</td>
+            </tr>
+            <tr>
+                <th>Nocardioplegias</th>
+                <td>{{ operacionModif.noCardioplegias }}</td>
+            </tr>
+            <tr>
+                <th>Trm</th>
+                <td>{{ operacionModif.trm }}</td>
+            </tr>
+            <tr>
+                <th>Suturasempleadas</th>
+                <td>{{ operacionModif.suturasEmpleadas }}</td>
+            </tr>
+            <tr>
+                <th>Drenajes</th>
+                <td>{{ operacionModif.drenajes }}</td>
+            </tr>
+            <tr>
+                <th>Viaexteorizaciondrenaje</th>
+                <td>{{ operacionModif.viaExteorizacionDrenaje }}</td>
+            </tr>
+            <tr>
+                <th>Otrasoperaciones</th>
+                <td>{{ operacionModif.otrasOperaciones }}</td>
+            </tr>
+            <tr>
+                <th>Diagnosticooperatorio</th>
+                <td>{{ operacionModif.diagnosticoOperatorio }}</td>
+            </tr>
+            <tr>
+                <th>Piezasenviadasap</th>
+                <td>{{ operacionModif.piezasEnviadasAp }}</td>
+            </tr>
+            <tr>
+                <th>Muestrasenviadaslab</th>
+                <td>{{ operacionModif.muestrasEnviadasLab }}</td>
+            </tr>
+            <tr>
+                <th>Totalliquidoadministrado</th>
+                <td>{{ operacionModif.totalLiquidoAdministrado }}</td>
+            </tr>
+            <tr>
+                <th>Cantliquidoaspirador</th>
+                <td>{{ operacionModif.cantLiquidoAspirador }}</td>
+            </tr>
+            <tr>
+                <th>Sangre</th>
+                <td>{{ operacionModif.sangre }}</td>
+            </tr>
+            <tr>
+                <th>Globulos</th>
+                <td>{{ operacionModif.globulos }}</td>
+            </tr>
+            <tr>
+                <th>Plasma</th>
+                <td>{{ operacionModif.plasma }}</td>
+            </tr>
+            <tr>
+                <th>Dextrosa</th>
+                <td>{{ operacionModif.dextrosa }}</td>
+            </tr>
+            <tr>
+                <th>Electrolitosdextran</th>
+                <td>{{ operacionModif.electrolitosDextran }}</td>
+            </tr>
+            <tr>
+                <th>Clna</th>
+                <td>{{ operacionModif.clna }}</td>
+            </tr>
+            <tr>
+                <th>Cantcompresasg</th>
+                <td>{{ operacionModif.cantCompresasG }}</td>
+            </tr>
+            <tr>
+                <th>Cantcompresasmc</th>
+                <td>{{ operacionModif.cantCompresasMc }}</td>
+            </tr>
+            <tr>
+                <th>Cantcompresasch</th>
+                <td>{{ operacionModif.cantCompresasCh }}</td>
+            </tr>
+            <tr>
+                <th>Instrumentalcompleto</th>
+                <td>{{ operacionModif.instrumentalCompleto }}</td>
+            </tr>
+            <tr>
+                <th>Tiempoquirurgico</th>
+                <td>{% if operacionModif.tiempoQuirurgico %}{{ operacionModif.tiempoQuirurgico|date('H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Pulso</th>
+                <td>{{ operacionModif.pulso }}</td>
+            </tr>
+            <tr>
+                <th>Tensionarterial</th>
+                <td>{{ operacionModif.tensionArterial }}</td>
+            </tr>
+            <tr>
+                <th>Fechainicio</th>
+                <td>{% if operacionModif.fechaInicio %}{{ operacionModif.fechaInicio|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fechafin</th>
+                <td>{% if operacionModif.fechaFin %}{{ operacionModif.fechaFin|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Horainicio</th>
+                <td>{% if operacionModif.horaInicio %}{{ operacionModif.horaInicio|date('H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Horafin</th>
+                <td>{% if operacionModif.horaFin %}{{ operacionModif.horaFin|date('H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Cama</th>
+                <td>{{ operacionModif.cama }}</td>
+            </tr>
+            <tr>
+                <th>Fechaelaboracion</th>
+                <td>{% if operacionModif.fechaElaboracion %}{{ operacionModif.fechaElaboracion|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fechamodif</th>
+                <td>{% if operacionModif.fechaModif %}{{ operacionModif.fechaModif|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Idoperacionmodif</th>
+                <td>{{ operacionModif.idOperacionModif }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('operacionmodif_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('operacionmodif_edit', { 'idOperacionModif': operacionModif.idOperacionModif }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

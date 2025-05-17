@@ -1,0 +1,545 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * OperacionModif
+ *
+ * @ORM\Table(name="operacion_modif", indexes={@ORM\Index(name="IDX_D9A09DD5F1F2969D", columns={"operacion_fk"}), @ORM\Index(name="IDX_D9A09DD56437DB8A", columns={"paciente_fk"}), @ORM\Index(name="IDX_D9A09DD592A8E699", columns={"cirujano_fk"}), @ORM\Index(name="IDX_D9A09DD5BAB324AA", columns={"anestesista_fk"}), @ORM\Index(name="IDX_D9A09DD53CE9E6B9", columns={"primer_ayudante_fk"}), @ORM\Index(name="IDX_D9A09DD5C564DD53", columns={"perfusionista_fk"}), @ORM\Index(name="IDX_D9A09DD5ADDC551D", columns={"clasif_oper_tipo_1_fk"}), @ORM\Index(name="IDX_D9A09DD5BF69FAF3", columns={"clasif_oper_tipo_2_fk"}), @ORM\Index(name="IDX_D9A09DD57D59D96", columns={"clasif_oper_tipo_3_fk"}), @ORM\Index(name="IDX_D9A09DD5124DEA4C", columns={"codificacion_fk"}), @ORM\Index(name="IDX_D9A09DD5E44C8281", columns={"metodo_anestesico_fk"}), @ORM\Index(name="IDX_D9A09DD584B1DBA9", columns={"agente_anestesico_fk"}), @ORM\Index(name="IDX_D9A09DD59D155980", columns={"diagnostico_clinico_fk"}), @ORM\Index(name="IDX_D9A09DD5ED162627", columns={"operacion_realizada_fk"}), @ORM\Index(name="IDX_D9A09DD5CE4A5242", columns={"tipo_protesis_fk"}), @ORM\Index(name="IDX_D9A09DD5D109CB01", columns={"enfermera_fk"}), @ORM\Index(name="IDX_D9A09DD5D23BDE61", columns={"sala_fk"}), @ORM\Index(name="IDX_D9A09DD55725ECB", columns={"medico_asistencia_fk"}), @ORM\Index(name="IDX_D9A09DD51964F763", columns={"estado_salir_salon_fk"}), @ORM\Index(name="IDX_D9A09DD5CE1465DC", columns={"reflejos_fk"}), @ORM\Index(name="IDX_D9A09DD5506F7763", columns={"respiracion_fk"})})
+ * @ORM\Entity
+ */
+class OperacionModif
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="folio", type="string", length=50, nullable=true)
+     */
+    private $folio;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="edad_paciente", type="integer", nullable=true)
+     */
+    private $edadPaciente;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="salon", type="string", length=1, nullable=true)
+     */
+    private $salon;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="reintervencion", type="string", length=2, nullable=true)
+     */
+    private $reintervencion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cirugia_cardiaca_previa", type="string", length=2, nullable=true)
+     */
+    private $cirugiaCardiacaPrevia;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="numero_cirugia_previa", type="integer", nullable=true)
+     */
+    private $numeroCirugiaPrevia;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descripcion_acto_operatorio", type="text", nullable=true)
+     */
+    private $descripcionActoOperatorio;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="accidentes_ocurridos", type="text", nullable=true)
+     */
+    private $accidentesOcurridos;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="pensamiento_aortico", type="integer", nullable=true)
+     */
+    private $pensamientoAortico;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="tparo_anoxico", type="integer", nullable=true)
+     */
+    private $tparoAnoxico;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="tbypass_total", type="integer", nullable=true)
+     */
+    private $tbypassTotal;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="tbypass_parcial", type="integer", nullable=true)
+     */
+    private $tbypassParcial;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="tbypass_apoyo", type="integer", nullable=true)
+     */
+    private $tbypassApoyo;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="no_cardioplegias", type="integer", nullable=true)
+     */
+    private $noCardioplegias;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="trm", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $trm;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="suturas_empleadas", type="text", nullable=true)
+     */
+    private $suturasEmpleadas;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="drenajes", type="text", nullable=true)
+     */
+    private $drenajes;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="via_exteorizacion_drenaje", type="text", nullable=true)
+     */
+    private $viaExteorizacionDrenaje;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="otras_operaciones", type="text", nullable=true)
+     */
+    private $otrasOperaciones;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="diagnostico_operatorio", type="text", nullable=true)
+     */
+    private $diagnosticoOperatorio;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="piezas_enviadas_ap", type="text", nullable=true)
+     */
+    private $piezasEnviadasAp;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="muestras_enviadas_lab", type="text", nullable=true)
+     */
+    private $muestrasEnviadasLab;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="total_liquido_administrado", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $totalLiquidoAdministrado;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="cant_liquido_aspirador", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $cantLiquidoAspirador;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="sangre", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $sangre;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="globulos", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $globulos;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="plasma", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $plasma;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="dextrosa", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $dextrosa;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="electrolitos_dextran", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $electrolitosDextran;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="clna", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $clna;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cant_compresas_g", type="integer", nullable=true)
+     */
+    private $cantCompresasG;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cant_compresas_mc", type="integer", nullable=true)
+     */
+    private $cantCompresasMc;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cant_compresas_ch", type="integer", nullable=true)
+     */
+    private $cantCompresasCh;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="tiempo_quirurgico", type="time", nullable=true)
+     */
+    private $tiempoQuirurgico;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="pulso", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $pulso;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tension_arterial", type="string", length=25, nullable=true)
+     */
+    private $tensionArterial;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_inicio", type="date", nullable=true)
+     */
+    private $fechaInicio;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_fin", type="date", nullable=true)
+     */
+    private $fechaFin;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="hora_inicio", type="time", nullable=true)
+     */
+    private $horaInicio;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="hora_fin", type="time", nullable=true)
+     */
+    private $horaFin;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cama", type="integer", nullable=true)
+     */
+    private $cama;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_elaboracion", type="date", nullable=true)
+     */
+    private $fechaElaboracion;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_modif", type="date", nullable=true)
+     */
+    private $fechaModif;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="instrumental_completo", type="boolean", nullable=true)
+     */
+    private $instrumentalCompleto;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_operacion_modif", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="operacion_modif_id_operacion_modif_seq", allocationSize=1, initialValue=1)
+     */
+    private $idOperacionModif;
+
+    /**
+     * @var \AppBundle\Entity\Personal
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Personal")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="enfermera_fk", referencedColumnName="id_personal")
+     * })
+     */
+    private $enfermeraFk;
+
+    /**
+     * @var \AppBundle\Entity\TipoProtesis
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\TipoProtesis")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tipo_protesis_fk", referencedColumnName="id_tipo_protesis")
+     * })
+     */
+    private $tipoProtesisFk;
+
+    /**
+     * @var \AppBundle\Entity\OperacionRealizada
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\OperacionRealizada")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="operacion_realizada_fk", referencedColumnName="id_operacion_realizada")
+     * })
+     */
+    private $operacionRealizadaFk;
+
+    /**
+     * @var \AppBundle\Entity\DiagnosticoClinico
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\DiagnosticoClinico")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="diagnostico_clinico_fk", referencedColumnName="id_diagnostico_clinico")
+     * })
+     */
+    private $diagnosticoClinicoFk;
+
+    /**
+     * @var \AppBundle\Entity\Sala
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Sala")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="sala_fk", referencedColumnName="id_sala")
+     * })
+     */
+    private $salaFk;
+
+    /**
+     * @var \AppBundle\Entity\Personal
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Personal")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="medico_asistencia_fk", referencedColumnName="id_personal")
+     * })
+     */
+    private $medicoAsistenciaFk;
+
+    /**
+     * @var \AppBundle\Entity\Respiracion
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Respiracion")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="respiracion_fk", referencedColumnName="id_respiracion")
+     * })
+     */
+    private $respiracionFk;
+
+    /**
+     * @var \AppBundle\Entity\Reflejos
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Reflejos")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="reflejos_fk", referencedColumnName="id_reflejos")
+     * })
+     */
+    private $reflejosFk;
+
+    /**
+     * @var \AppBundle\Entity\EstadoSalirSalon
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\EstadoSalirSalon")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="estado_salir_salon_fk", referencedColumnName="id_estado_salir_salon")
+     * })
+     */
+    private $estadoSalirSalonFk;
+
+    /**
+     * @var \AppBundle\Entity\AgenteAnestesico
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\AgenteAnestesico")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="agente_anestesico_fk", referencedColumnName="id_agente_anestesico")
+     * })
+     */
+    private $agenteAnestesicoFk;
+
+    /**
+     * @var \AppBundle\Entity\MetodoAnestesico
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\MetodoAnestesico")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="metodo_anestesico_fk", referencedColumnName="id_metodo_anestesico")
+     * })
+     */
+    private $metodoAnestesicoFk;
+
+    /**
+     * @var \AppBundle\Entity\Personal
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Personal")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="primer_ayudante_fk", referencedColumnName="id_personal")
+     * })
+     */
+    private $primerAyudanteFk;
+
+    /**
+     * @var \AppBundle\Entity\Personal
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Personal")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="anestesista_fk", referencedColumnName="id_personal")
+     * })
+     */
+    private $anestesistaFk;
+
+    /**
+     * @var \AppBundle\Entity\Personal
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Personal")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="cirujano_fk", referencedColumnName="id_personal")
+     * })
+     */
+    private $cirujanoFk;
+
+    /**
+     * @var \AppBundle\Entity\Pacientes
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Pacientes")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="paciente_fk", referencedColumnName="id_pacientes")
+     * })
+     */
+    private $pacienteFk;
+
+    /**
+     * @var \AppBundle\Entity\Personal
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Personal")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="perfusionista_fk", referencedColumnName="id_personal")
+     * })
+     */
+    private $perfusionistaFk;
+
+    /**
+     * @var \AppBundle\Entity\ClasifOperTipo1
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ClasifOperTipo1")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="clasif_oper_tipo_1_fk", referencedColumnName="id_clasif_oper_tipo_1")
+     * })
+     */
+    private $clasifOperTipo1Fk;
+
+    /**
+     * @var \AppBundle\Entity\Codificacion
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Codificacion")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="codificacion_fk", referencedColumnName="id_codificacion")
+     * })
+     */
+    private $codificacionFk;
+
+    /**
+     * @var \AppBundle\Entity\ClasifOperTipo3
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ClasifOperTipo3")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="clasif_oper_tipo_3_fk", referencedColumnName="id_clasif_oper_tipo_3")
+     * })
+     */
+    private $clasifOperTipo3Fk;
+
+    /**
+     * @var \AppBundle\Entity\ClasifOperTipo2
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ClasifOperTipo2")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="clasif_oper_tipo_2_fk", referencedColumnName="id_clasif_oper_tipo_2")
+     * })
+     */
+    private $clasifOperTipo2Fk;
+
+    /**
+     * @var \AppBundle\Entity\Operacion
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Operacion")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="operacion_fk", referencedColumnName="id_operacion")
+     * })
+     */
+    private $operacionFk;
+
+
+}
+

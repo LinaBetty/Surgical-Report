@@ -1,0 +1,125 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Operacionmodifs list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Folio</th>
+                <th>Edadpaciente</th>
+                <th>Salon</th>
+                <th>Reintervencion</th>
+                <th>Cirugiacardiacaprevia</th>
+                <th>Numerocirugiaprevia</th>
+                <th>Descripcionactooperatorio</th>
+                <th>Accidentesocurridos</th>
+                <th>Pensamientoaortico</th>
+                <th>Tparoanoxico</th>
+                <th>Tbypasstotal</th>
+                <th>Tbypassparcial</th>
+                <th>Tbypassapoyo</th>
+                <th>Nocardioplegias</th>
+                <th>Trm</th>
+                <th>Suturasempleadas</th>
+                <th>Drenajes</th>
+                <th>Viaexteorizaciondrenaje</th>
+                <th>Otrasoperaciones</th>
+                <th>Diagnosticooperatorio</th>
+                <th>Piezasenviadasap</th>
+                <th>Muestrasenviadaslab</th>
+                <th>Totalliquidoadministrado</th>
+                <th>Cantliquidoaspirador</th>
+                <th>Sangre</th>
+                <th>Globulos</th>
+                <th>Plasma</th>
+                <th>Dextrosa</th>
+                <th>Electrolitosdextran</th>
+                <th>Clna</th>
+                <th>Cantcompresasg</th>
+                <th>Cantcompresasmc</th>
+                <th>Cantcompresasch</th>
+                <th>Instrumentalcompleto</th>
+                <th>Tiempoquirurgico</th>
+                <th>Pulso</th>
+                <th>Tensionarterial</th>
+                <th>Fechainicio</th>
+                <th>Fechafin</th>
+                <th>Horainicio</th>
+                <th>Horafin</th>
+                <th>Cama</th>
+                <th>Fechaelaboracion</th>
+                <th>Fechamodif</th>
+                <th>Idoperacionmodif</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for operacionModif in operacionModifs %}
+            <tr>
+                <td><a href="{{ path('operacionmodif_show', { 'idOperacionModif': operacionModif.idOperacionModif }) }}">{{ operacionModif.folio }}</a></td>
+                <td>{{ operacionModif.edadPaciente }}</td>
+                <td>{{ operacionModif.salon }}</td>
+                <td>{{ operacionModif.reintervencion }}</td>
+                <td>{{ operacionModif.cirugiaCardiacaPrevia }}</td>
+                <td>{{ operacionModif.numeroCirugiaPrevia }}</td>
+                <td>{{ operacionModif.descripcionActoOperatorio }}</td>
+                <td>{{ operacionModif.accidentesOcurridos }}</td>
+                <td>{{ operacionModif.pensamientoAortico }}</td>
+                <td>{{ operacionModif.tparoAnoxico }}</td>
+                <td>{{ operacionModif.tbypassTotal }}</td>
+                <td>{{ operacionModif.tbypassParcial }}</td>
+                <td>{{ operacionModif.tbypassApoyo }}</td>
+                <td>{{ operacionModif.noCardioplegias }}</td>
+                <td>{{ operacionModif.trm }}</td>
+                <td>{{ operacionModif.suturasEmpleadas }}</td>
+                <td>{{ operacionModif.drenajes }}</td>
+                <td>{{ operacionModif.viaExteorizacionDrenaje }}</td>
+                <td>{{ operacionModif.otrasOperaciones }}</td>
+                <td>{{ operacionModif.diagnosticoOperatorio }}</td>
+                <td>{{ operacionModif.piezasEnviadasAp }}</td>
+                <td>{{ operacionModif.muestrasEnviadasLab }}</td>
+                <td>{{ operacionModif.totalLiquidoAdministrado }}</td>
+                <td>{{ operacionModif.cantLiquidoAspirador }}</td>
+                <td>{{ operacionModif.sangre }}</td>
+                <td>{{ operacionModif.globulos }}</td>
+                <td>{{ operacionModif.plasma }}</td>
+                <td>{{ operacionModif.dextrosa }}</td>
+                <td>{{ operacionModif.electrolitosDextran }}</td>
+                <td>{{ operacionModif.clna }}</td>
+                <td>{{ operacionModif.cantCompresasG }}</td>
+                <td>{{ operacionModif.cantCompresasMc }}</td>
+                <td>{{ operacionModif.cantCompresasCh }}</td>
+                <td>{{ operacionModif.instrumentalCompleto }}</td>
+                <td>{% if operacionModif.tiempoQuirurgico %}{{ operacionModif.tiempoQuirurgico|date('H:i:s') }}{% endif %}</td>
+                <td>{{ operacionModif.pulso }}</td>
+                <td>{{ operacionModif.tensionArterial }}</td>
+                <td>{% if operacionModif.fechaInicio %}{{ operacionModif.fechaInicio|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if operacionModif.fechaFin %}{{ operacionModif.fechaFin|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if operacionModif.horaInicio %}{{ operacionModif.horaInicio|date('H:i:s') }}{% endif %}</td>
+                <td>{% if operacionModif.horaFin %}{{ operacionModif.horaFin|date('H:i:s') }}{% endif %}</td>
+                <td>{{ operacionModif.cama }}</td>
+                <td>{% if operacionModif.fechaElaboracion %}{{ operacionModif.fechaElaboracion|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if operacionModif.fechaModif %}{{ operacionModif.fechaModif|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ operacionModif.idOperacionModif }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('operacionmodif_show', { 'idOperacionModif': operacionModif.idOperacionModif }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('operacionmodif_edit', { 'idOperacionModif': operacionModif.idOperacionModif }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('operacionmodif_new') }}">Create a new operacionModif</a>
+        </li>
+    </ul>
+{% endblock %}

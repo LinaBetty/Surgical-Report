@@ -1,0 +1,211 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editar Cuenta{% endblock %}
+
+{% block body %}
+    {#<h1>Usuario edit</h1>#}
+
+    {#{{ form_start(edit_form) }}#}
+    {#{{ form_widget(edit_form) }}#}
+    {#<input type="submit" value="Edit" />#}
+    {#{{ form_end(edit_form) }}#}
+
+    {#<ul>#}
+    {#<li>#}
+    {#<a href="{{ path('usuario_index') }}">Back to the list</a>#}
+    {#</li>#}
+    {#<li>#}
+    {#{{ form_start(delete_form) }}#}
+    {#<input type="submit" value="Delete">#}
+    {#{{ form_end(delete_form) }}#}
+    {#</li>#}
+    {#</ul>#}
+
+    <div class="basic-form-area mg-b-15" style="padding-top: 1%">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="sparkline12-list">
+                        <div class="main-sparkline12-hd">
+                            {% if app.session.flashBag.has('danger') %}
+                                <div class="alert alert-success">
+                                    {% for msg in app.session.flashBag.get('danger') %}
+                                        {{ msg }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            <h1 style="font-size: 200%">Editar Cuenta</h1>
+                            <br>
+                        </div>
+                        <div class="sparkline12-graph">
+                            <div class="basic-login-form-ad">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="all-form-element-inner">
+                                            {{ form_start(edit_form) }}
+                                            {%  if form_errors(edit_form)  != '' %}
+                                                <div class="alert alert-danger">
+                                                    {{ form_errors(edit_form) }}
+                                                </div>
+                                            {% endif %}
+
+                                            <div class="form-group-inner">
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                        {{ form_label(edit_form.username) }}
+                                                        {%  if form_errors(edit_form.username)  != '' %}
+                                                            <div class="alert alert-danger">
+                                                                {{ form_errors(edit_form.username) }}
+                                                            </div>
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                        {{ form_widget(edit_form.username, {'attr': {'class': 'form-control'}}) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group-inner">
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                        {{ form_label(edit_form.email) }}
+                                                        {%  if form_errors(edit_form.email)  != '' %}
+                                                            <div class="alert alert-danger">
+                                                                {{ form_errors(edit_form.email) }}
+                                                            </div>
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                        {{ form_widget(edit_form.email, {'attr': {'class': 'form-control'}}) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group-inner"
+                                                    {% if is_granted('ROLE_ADMIN') %}
+
+                                                    {% endif %}
+                                                    {% if is_granted('ROLE_MEDICO') %}
+                                                        hidden
+                                                    {% endif %}
+                                            >
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                        {{ form_label(edit_form.personalFk) }}
+                                                        {%  if form_errors(edit_form.personalFk)  != '' %}
+                                                            <div class="alert alert-danger">
+                                                                {{ form_errors(edit_form.personalFk) }}
+                                                            </div>
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                        <div class="form-select-list">
+                                                            {{ form_widget(edit_form.personalFk, {'attr': {'class': 'form-control custom-select-value'}}) }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group-inner"
+                                                    {% if is_granted('ROLE_ADMIN') %}
+
+                                                    {% endif %}
+                                                    {% if is_granted('ROLE_MEDICO') %}
+                                                        hidden
+                                                    {% endif %}
+                                            >
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                        {{ form_label(edit_form.rol) }}
+                                                        {%  if form_errors(edit_form.rol)  != '' %}
+                                                            <div class="alert alert-danger">
+                                                                {{ form_errors(edit_form.rol) }}
+                                                            </div>
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                        <div class="form-select-list">
+                                                            {{ form_widget(edit_form.rol, {'attr': {'class': 'form-control custom-select-value'}}) }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group-inner">
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                        {{ form_label(edit_form.plainPassword.first) }}
+                                                        {%  if form_errors(edit_form.plainPassword.first)  != '' %}
+                                                            <div class="alert alert-danger">
+                                                                {{ form_errors(edit_form.plainPassword.first) }}
+                                                            </div>
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                        {{ form_widget(edit_form.plainPassword.first, {'attr': {'class': 'form-control'}}) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group-inner">
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                        {{ form_label(edit_form.plainPassword.second) }}
+                                                        {%  if form_errors(edit_form.plainPassword.second)  != '' %}
+                                                            <div class="alert alert-danger">
+                                                                {{ form_errors(edit_form.plainPassword.second) }}
+                                                            </div>
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                        {{ form_widget(edit_form.plainPassword.second, {'attr': {'class': 'form-control'}}) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {#<div class="form-group-inner">#}
+                                            {#<div class="row">#}
+                                            {#<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">#}
+                                            {#{{ form_label(edit_form.rol) }}#}
+                                            {#{{ form_errors(edit_form.rol) }}#}
+                                            {#</div>#}
+                                            {#<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">#}
+                                            {#<div class="form-select-list">#}
+                                            {#{{ form_widget(edit_form.rol , {'attr': {'class': 'form-control custom-select-value'}}) }}#}
+                                            {#</div>#}
+                                            {#</div>#}
+                                            {#</div>#}
+                                            {#</div>#}
+
+                                            {#<input type="submit" value="Create"/>#}
+
+                                            <div class="form-group-inner">
+                                                <div class="login-btn-inner">
+                                                    <div class="row">
+                                                        <div class="col-lg-3"></div>
+                                                        <div class="col-lg-9">
+                                                            <div class="login-horizental cancel-wp pull-right form-bc-ele">
+                                                                <button class="btn btn-white">
+                                                                    <a href="{{ path('usuario_index') }}">Cancelar</a>
+                                                                </button>
+                                                                <button class="btn btn-sm btn-primary login-submit-cs"
+                                                                        type="submit" value="Edit">Editar
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{ form_end(edit_form) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block graficos %}{% endblock %}

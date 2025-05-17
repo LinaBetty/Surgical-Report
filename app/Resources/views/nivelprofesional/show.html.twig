@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Nivelprofesional</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Nombrecorto</th>
+                <td>{{ nivelProfesional.nombreCorto }}</td>
+            </tr>
+            <tr>
+                <th>Nombrecompleto</th>
+                <td>{{ nivelProfesional.nombreCompleto }}</td>
+            </tr>
+            <tr>
+                <th>Nivelprofesionalid</th>
+                <td>{{ nivelProfesional.nivelProfesionalId }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('nivelprofesional_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('nivelprofesional_edit', { 'nivelProfesionalId': nivelProfesional.nivelProfesionalId }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

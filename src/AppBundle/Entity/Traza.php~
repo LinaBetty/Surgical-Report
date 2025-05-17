@@ -1,0 +1,68 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Traza
+ *
+ * @ORM\Table(name="traza", indexes={@ORM\Index(name="IDX_AD36B8A0CC1F42C0", columns={"usuario_fk"}), @ORM\Index(name="IDX_AD36B8A0F1F2969D", columns={"operacion_fk"})})
+ * @ORM\Entity
+ */
+class Traza
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="accion_realizada", type="text", nullable=true)
+     */
+    private $accionRealizada;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha", type="date", nullable=true)
+     */
+    private $fecha;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="hora", type="time", nullable=true)
+     */
+    private $hora;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_traza", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="traza_id_traza_seq", allocationSize=1, initialValue=1)
+     */
+    private $idTraza;
+
+    /**
+     * @var \AppBundle\Entity\Operacion
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Operacion")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="operacion_fk", referencedColumnName="id_operacion")
+     * })
+     */
+    private $operacionFk;
+
+    /**
+     * @var \AppBundle\Entity\Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="usuario_fk", referencedColumnName="id")
+     * })
+     */
+    private $usuarioFk;
+
+
+}
+

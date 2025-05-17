@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Diagnosticoclinicos list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Iddiagnosticoclinico</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for diagnosticoClinico in diagnosticoClinicos %}
+            <tr>
+                <td><a href="{{ path('diagnosticoclinico_show', { 'idDiagnosticoClinico': diagnosticoClinico.idDiagnosticoClinico }) }}">{{ diagnosticoClinico.nombre }}</a></td>
+                <td>{{ diagnosticoClinico.idDiagnosticoClinico }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('diagnosticoclinico_show', { 'idDiagnosticoClinico': diagnosticoClinico.idDiagnosticoClinico }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('diagnosticoclinico_edit', { 'idDiagnosticoClinico': diagnosticoClinico.idDiagnosticoClinico }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('diagnosticoclinico_new') }}">Create a new diagnosticoClinico</a>
+        </li>
+    </ul>
+{% endblock %}

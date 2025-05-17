@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\OperacionModif" table="operacion_modif">
+    <indexes>
+      <index name="IDX_D9A09DD5F1F2969D" columns="operacion_fk"/>
+      <index name="IDX_D9A09DD56437DB8A" columns="paciente_fk"/>
+      <index name="IDX_D9A09DD592A8E699" columns="cirujano_fk"/>
+      <index name="IDX_D9A09DD5BAB324AA" columns="anestesista_fk"/>
+      <index name="IDX_D9A09DD53CE9E6B9" columns="primer_ayudante_fk"/>
+      <index name="IDX_D9A09DD5C564DD53" columns="perfusionista_fk"/>
+      <index name="IDX_D9A09DD5ADDC551D" columns="clasif_oper_tipo_1_fk"/>
+      <index name="IDX_D9A09DD5BF69FAF3" columns="clasif_oper_tipo_2_fk"/>
+      <index name="IDX_D9A09DD57D59D96" columns="clasif_oper_tipo_3_fk"/>
+      <index name="IDX_D9A09DD5124DEA4C" columns="codificacion_fk"/>
+      <index name="IDX_D9A09DD5E44C8281" columns="metodo_anestesico_fk"/>
+      <index name="IDX_D9A09DD584B1DBA9" columns="agente_anestesico_fk"/>
+      <index name="IDX_D9A09DD59D155980" columns="diagnostico_clinico_fk"/>
+      <index name="IDX_D9A09DD5ED162627" columns="operacion_realizada_fk"/>
+      <index name="IDX_D9A09DD5CE4A5242" columns="tipo_protesis_fk"/>
+      <index name="IDX_D9A09DD5D109CB01" columns="enfermera_fk"/>
+      <index name="IDX_D9A09DD5D23BDE61" columns="sala_fk"/>
+      <index name="IDX_D9A09DD55725ECB" columns="medico_asistencia_fk"/>
+      <index name="IDX_D9A09DD51964F763" columns="estado_salir_salon_fk"/>
+      <index name="IDX_D9A09DD5CE1465DC" columns="reflejos_fk"/>
+      <index name="IDX_D9A09DD5506F7763" columns="respiracion_fk"/>
+    </indexes>
+    <id name="idOperacionModif" type="integer" column="id_operacion_modif">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="operacion_modif_id_operacion_modif_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="folio" type="string" column="folio" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="edadPaciente" type="integer" column="edad_paciente" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="salon" type="string" column="salon" length="1" nullable="true">
+      <options>
+        <option name="fixed">1</option>
+      </options>
+    </field>
+    <field name="reintervencion" type="boolean" column="reintervencion" nullable="true">
+      <options>
+        <option name="fixed">1</option>
+      </options>
+    </field>
+    <field name="cirugiaCardiacaPrevia" type="string" column="cirugia_cardiaca_previa" length="2" nullable="true">
+      <options>
+        <option name="fixed">1</option>
+      </options>
+    </field>
+    <field name="numeroCirugiaPrevia" type="integer" column="numero_cirugia_previa" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="descripcionActoOperatorio" type="text" column="descripcion_acto_operatorio" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="accidentesOcurridos" type="text" column="accidentes_ocurridos" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="pensamientoAortico" type="integer" column="pensamiento_aortico" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="tparoAnoxico" type="integer" column="tparo_anoxico" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="tbypassTotal" type="integer" column="tbypass_total" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="tbypassParcial" type="integer" column="tbypass_parcial" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="tbypassApoyo" type="integer" column="tbypass_apoyo" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="noCardioplegias" type="integer" column="no_cardioplegias" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="trm" type="float" column="trm" precision="10" scale="0" nullable="true"/>
+    <field name="suturasEmpleadas" type="text" column="suturas_empleadas" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="drenajes" type="text" column="drenajes" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="viaExteorizacionDrenaje" type="text" column="via_exteorizacion_drenaje" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="otrasOperaciones" type="text" column="otras_operaciones" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="diagnosticoOperatorio" type="text" column="diagnostico_operatorio" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="piezasEnviadasAp" type="text" column="piezas_enviadas_ap" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="muestrasEnviadasLab" type="text" column="muestras_enviadas_lab" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="totalLiquidoAdministrado" type="float" column="total_liquido_administrado" precision="10" scale="0" nullable="true"/>
+    <field name="cantLiquidoAspirador" type="float" column="cant_liquido_aspirador" precision="10" scale="0" nullable="true"/>
+    <field name="sangre" type="float" column="sangre" precision="10" scale="0" nullable="true"/>
+    <field name="globulos" type="float" column="globulos" precision="10" scale="0" nullable="true"/>
+    <field name="plasma" type="float" column="plasma" precision="10" scale="0" nullable="true"/>
+    <field name="dextrosa" type="float" column="dextrosa" precision="10" scale="0" nullable="true"/>
+    <field name="electrolitosDextran" type="float" column="electrolitos_dextran" precision="10" scale="0" nullable="true"/>
+    <field name="clna" type="float" column="clna" precision="10" scale="0" nullable="true"/>
+    <field name="cantCompresasG" type="integer" column="cant_compresas_g" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="cantCompresasMc" type="integer" column="cant_compresas_mc" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="cantCompresasCh" type="integer" column="cant_compresas_ch" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="tiempoQuirurgico" type="time" column="tiempo_quirurgico" nullable="true"/>
+    <field name="pulso" type="float" column="pulso" precision="10" scale="0" nullable="true"/>
+    <field name="tensionArterial" type="string" column="tension_arterial" length="25" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="fechaInicio" type="date" column="fecha_inicio" nullable="true"/>
+    <field name="fechaFin" type="date" column="fecha_fin" nullable="true"/>
+    <field name="horaInicio" type="time" column="hora_inicio" nullable="true"/>
+    <field name="horaFin" type="time" column="hora_fin" nullable="true"/>
+    <field name="cama" type="integer" column="cama" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="fechaElaboracion" type="date" column="fecha_elaboracion" nullable="true"/>
+    <field name="fechaModif" type="date" column="fecha_modif" nullable="true"/>
+    <field name="instrumentalCompleto" type="boolean" column="instrumental_completo" nullable="true"/>
+    <many-to-one field="enfermeraFk" target-entity="Personal" fetch="LAZY">
+      <join-columns>
+        <join-column name="enfermera_fk" referenced-column-name="id_personal"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="tipoProtesisFk" target-entity="TipoProtesis" fetch="LAZY">
+      <join-columns>
+        <join-column name="tipo_protesis_fk" referenced-column-name="id_tipo_protesis"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="operacionRealizadaFk" target-entity="OperacionRealizada" fetch="LAZY">
+      <join-columns>
+        <join-column name="operacion_realizada_fk" referenced-column-name="id_operacion_realizada"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="diagnosticoClinicoFk" target-entity="DiagnosticoClinico" fetch="LAZY">
+      <join-columns>
+        <join-column name="diagnostico_clinico_fk" referenced-column-name="id_diagnostico_clinico"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="salaFk" target-entity="Sala" fetch="LAZY">
+      <join-columns>
+        <join-column name="sala_fk" referenced-column-name="id_sala"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="medicoAsistenciaFk" target-entity="Personal" fetch="LAZY">
+      <join-columns>
+        <join-column name="medico_asistencia_fk" referenced-column-name="id_personal"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="respiracionFk" target-entity="Respiracion" fetch="LAZY">
+      <join-columns>
+        <join-column name="respiracion_fk" referenced-column-name="id_respiracion"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="reflejosFk" target-entity="Reflejos" fetch="LAZY">
+      <join-columns>
+        <join-column name="reflejos_fk" referenced-column-name="id_reflejos"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="estadoSalirSalonFk" target-entity="EstadoSalirSalon" fetch="LAZY">
+      <join-columns>
+        <join-column name="estado_salir_salon_fk" referenced-column-name="id_estado_salir_salon"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="agenteAnestesicoFk" target-entity="AgenteAnestesico" fetch="LAZY">
+      <join-columns>
+        <join-column name="agente_anestesico_fk" referenced-column-name="id_agente_anestesico"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="metodoAnestesicoFk" target-entity="MetodoAnestesico" fetch="LAZY">
+      <join-columns>
+        <join-column name="metodo_anestesico_fk" referenced-column-name="id_metodo_anestesico"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="primerAyudanteFk" target-entity="Personal" fetch="LAZY">
+      <join-columns>
+        <join-column name="primer_ayudante_fk" referenced-column-name="id_personal"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="anestesistaFk" target-entity="Personal" fetch="LAZY">
+      <join-columns>
+        <join-column name="anestesista_fk" referenced-column-name="id_personal"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="cirujanoFk" target-entity="Personal" fetch="LAZY">
+      <join-columns>
+        <join-column name="cirujano_fk" referenced-column-name="id_personal"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="pacienteFk" target-entity="Pacientes" fetch="LAZY">
+      <join-columns>
+        <join-column name="paciente_fk" referenced-column-name="id_pacientes"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="perfusionistaFk" target-entity="Personal" fetch="LAZY">
+      <join-columns>
+        <join-column name="perfusionista_fk" referenced-column-name="id_personal"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="clasifOperTipo1Fk" target-entity="ClasifOperTipo1" fetch="LAZY">
+      <join-columns>
+        <join-column name="clasif_oper_tipo_1_fk" referenced-column-name="id_clasif_oper_tipo_1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="codificacionFk" target-entity="Codificacion" fetch="LAZY">
+      <join-columns>
+        <join-column name="codificacion_fk" referenced-column-name="id_codificacion"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="clasifOperTipo3Fk" target-entity="ClasifOperTipo3" fetch="LAZY">
+      <join-columns>
+        <join-column name="clasif_oper_tipo_3_fk" referenced-column-name="id_clasif_oper_tipo_3"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="clasifOperTipo2Fk" target-entity="ClasifOperTipo2" fetch="LAZY">
+      <join-columns>
+        <join-column name="clasif_oper_tipo_2_fk" referenced-column-name="id_clasif_oper_tipo_2"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="operacionFk" target-entity="Operacion" fetch="LAZY">
+      <join-columns>
+        <join-column name="operacion_fk" referenced-column-name="id_operacion"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,126 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Pacientes
+ *
+ * @ORM\Table(name="pacientes", indexes={@ORM\Index(name="IDX_971B785162106CCD", columns={"estado_civil_fk"}), @ORM\Index(name="IDX_971B78519BECB7F7", columns={"raza_fk"}), @ORM\Index(name="IDX_971B78513C15DA06", columns={"sexo_fk"}), @ORM\Index(name="IDX_971B7851595620F1", columns={"provincia_fk"}), @ORM\Index(name="IDX_971B78514F9B1ABE", columns={"municipio_fk"})})
+ * @ORM\Entity
+ */
+class Pacientes
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="historia_clinica", type="string", length=20, nullable=true)
+     */
+    private $historiaClinica;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ci", type="string", length=11, nullable=true)
+     */
+    private $ci;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre", type="string", length=30, nullable=true)
+     */
+    private $nombre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="primer_apellido", type="string", length=30, nullable=true)
+     */
+    private $primerApellido;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="segundo_apellido", type="string", length=30, nullable=true)
+     */
+    private $segundoApellido;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="direccion", type="string", length=1024, nullable=true)
+     */
+    private $direccion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="grupo_sanguineo", type="string", length=10, nullable=true)
+     */
+    private $grupoSanguineo;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_pacientes", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="pacientes_id_pacientes_seq", allocationSize=1, initialValue=1)
+     */
+    private $idPacientes;
+
+    /**
+     * @var \AppBundle\Entity\Municipio
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Municipio")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="municipio_fk", referencedColumnName="id")
+     * })
+     */
+    private $municipioFk;
+
+    /**
+     * @var \AppBundle\Entity\Provincia
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Provincia")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="provincia_fk", referencedColumnName="id")
+     * })
+     */
+    private $provinciaFk;
+
+    /**
+     * @var \AppBundle\Entity\Sexo
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Sexo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="sexo_fk", referencedColumnName="id_sexo")
+     * })
+     */
+    private $sexoFk;
+
+    /**
+     * @var \AppBundle\Entity\Raza
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Raza")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="raza_fk", referencedColumnName="id_raza")
+     * })
+     */
+    private $razaFk;
+
+    /**
+     * @var \AppBundle\Entity\EstadoCivil
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\EstadoCivil")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="estado_civil_fk", referencedColumnName="id_estado_civil")
+     * })
+     */
+    private $estadoCivilFk;
+
+
+}
+

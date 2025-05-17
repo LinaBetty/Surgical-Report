@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Codificacions list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Idcodificacion</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for codificacion in codificacions %}
+            <tr>
+                <td><a href="{{ path('codificacion_show', { 'idCodificacion': codificacion.idCodificacion }) }}">{{ codificacion.nombre }}</a></td>
+                <td>{{ codificacion.idCodificacion }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('codificacion_show', { 'idCodificacion': codificacion.idCodificacion }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('codificacion_edit', { 'idCodificacion': codificacion.idCodificacion }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('codificacion_new') }}">Create a new codificacion</a>
+        </li>
+    </ul>
+{% endblock %}

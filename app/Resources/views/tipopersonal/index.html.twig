@@ -1,0 +1,51 @@
+{% extends 'personal/index.html.twig' %}
+
+{% block body %}
+    <!-- Static Table Start -->
+    <div class="data-table-area mg-b-15" style="margin-top: 25px">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="sparkline13-list">
+                        <div class="sparkline13-hd">
+                            <div class="main-sparkline13-hd">
+                                <h1>Listado <span class="table-project-n">de</span> Tipos de Personal</h1>
+                            </div>
+                        </div>
+                        <div class="sparkline13-graph">
+                            <div class="datatable-dashv1-list custom-datatable-overright">
+                                <div class="add-product">
+                                    <a href="{{ path('personal_new') }}">Añadir Tipo de Personal</a>
+                                </div>
+                                <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true"
+                                       data-cookie-id-table="saveId" data-show-export="false" data-click-to-select="true" data-toolbar="#toolbar">
+                                    <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for tipoPersonal in tipoPersonals %}
+                                        <tr>
+                                            <td>{{ tipoPersonal.nombre }}</a></td>
+                                            <td>
+                                                <a href="{{ path('tipopersonal_show', { 'idTipoPersonal': tipoPersonal.idTipoPersonal }) }}"><button data-toggle="tooltip" title="Show" class="pd-setting-ed"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a>
+                                                <a href="{{ path('tipopersonal_edit', { 'idTipoPersonal': tipoPersonal.idTipoPersonal }) }}"><button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
+                                                <a href="{{ path('tipopersonal_delete', { 'idTipoPersonal': tipoPersonal.idTipoPersonal }) }}"><button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button></a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

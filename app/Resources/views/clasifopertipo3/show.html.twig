@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Clasifopertipo3</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ clasifOperTipo3.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Idclasifopertipo3</th>
+                <td>{{ clasifOperTipo3.idClasifOperTipo3 }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('clasifopertipo3_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('clasifopertipo3_edit', { 'idClasifOperTipo3': clasifOperTipo3.idClasifOperTipo3 }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Sexos list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Idsexo</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sexo in sexos %}
+            <tr>
+                <td><a href="{{ path('sexo_show', { 'idSexo': sexo.idSexo }) }}">{{ sexo.nombre }}</a></td>
+                <td>{{ sexo.idSexo }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('sexo_show', { 'idSexo': sexo.idSexo }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('sexo_edit', { 'idSexo': sexo.idSexo }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('sexo_new') }}">Create a new sexo</a>
+        </li>
+    </ul>
+{% endblock %}

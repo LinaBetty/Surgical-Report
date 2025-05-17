@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Operacionrealizadas list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Idoperacionrealizada</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for operacionRealizada in operacionRealizadas %}
+            <tr>
+                <td><a href="{{ path('operacionrealizada_show', { 'idOperacionRealizada': operacionRealizada.idOperacionRealizada }) }}">{{ operacionRealizada.nombre }}</a></td>
+                <td>{{ operacionRealizada.idOperacionRealizada }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('operacionrealizada_show', { 'idOperacionRealizada': operacionRealizada.idOperacionRealizada }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('operacionrealizada_edit', { 'idOperacionRealizada': operacionRealizada.idOperacionRealizada }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('operacionrealizada_new') }}">Create a new operacionRealizada</a>
+        </li>
+    </ul>
+{% endblock %}

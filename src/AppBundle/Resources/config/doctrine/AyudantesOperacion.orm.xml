@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\AyudantesOperacion" table="ayudantes_operacion">
+    <indexes>
+      <index name="IDX_41C1C12B4A640817" columns="personal_fk"/>
+      <index name="IDX_41C1C12BF1F2969D" columns="operacion_fk"/>
+    </indexes>
+    <id name="idAyudantesOperacion" type="integer" column="id_ayudantes_operacion">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="ayudantes_operacion_id_ayudantes_operacion_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <many-to-one field="operacionFk" target-entity="Operacion" fetch="LAZY">
+      <join-columns>
+        <join-column name="operacion_fk" referenced-column-name="id_operacion"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="personalFk" target-entity="Personal" fetch="LAZY">
+      <join-columns>
+        <join-column name="personal_fk" referenced-column-name="id_personal"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,60 @@
+{% extends 'personal/index.html.twig' %}
+
+{% block title %}Listado de Pacientes{% endblock %}
+
+{% block body %}
+    <!-- Static Table Start -->
+    <div class="data-table-area mg-b-15" style="margin-top: 25px">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="sparkline13-list">
+                        <div class="sparkline13-hd">
+                            <div class="main-sparkline13-hd">
+                                <h1>Listado <span class="table-project-n">de</span> Pacientes</h1>
+                            </div>
+                        </div>
+                        <div class="sparkline13-graph">
+                            <div class="datatable-dashv1-list custom-datatable-overright">
+                                <div class="add-product">
+                                    <a href="{{ path('pacientes_new') }}">Añadir Paciente</a>
+                                </div>
+                                <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true"
+                                       data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
+                                    <thead>
+                                    <tr>
+                                        <th data-field="id" data-editable="false">Carnet de Identidad</th>
+                                        <th data-field="hc" data-editable="false">Historia Clínica</th>
+                                        <th data-field="name" data-editable="false">Nombre</th>
+                                        <th data-field="1lastname">Primer Apellido</th>
+                                        <th data-field="2lastname">Segundo Apellido</th>
+                                        <th data-field="action">Acciones</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for paciente in pacientes %}
+                                        <tr>
+                                            <td>{{ paciente.ci }}</td>
+                                            <td>{{ paciente.historiaClinica }}</a></td>
+                                            <td>{{ paciente.nombre }}</td>
+                                            <td>{{ paciente.primerApellido }}</td>
+                                            <td>{{ paciente.segundoApellido }}</td>
+                                            <td>
+                                                <a title="Ver detalles del paciente" href="{{ path('pacientes_show', { 'idPacientes': paciente.idPacientes }) }}"><button title="Ver detalles del paciente" data-toggle="tooltip" class="pd-setting-ed"><i class="fa fa-search-plus" aria-hidden="true"></i></button></a>
+                                                <a title="Editar la información del paciente" href="{{ path('pacientes_edit', { 'idPacientes': paciente.idPacientes }) }}"><button title="Editar la información del paciente" data-toggle="tooltip" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+{% block graficos %}{% endblock %}

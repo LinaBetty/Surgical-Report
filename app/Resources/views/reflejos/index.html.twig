@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Reflejos list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Idreflejos</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reflejo in reflejos %}
+            <tr>
+                <td><a href="{{ path('reflejos_show', { 'idReflejos': reflejo.idReflejos }) }}">{{ reflejo.nombre }}</a></td>
+                <td>{{ reflejo.idReflejos }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('reflejos_show', { 'idReflejos': reflejo.idReflejos }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('reflejos_edit', { 'idReflejos': reflejo.idReflejos }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('reflejos_new') }}">Create a new reflejo</a>
+        </li>
+    </ul>
+{% endblock %}

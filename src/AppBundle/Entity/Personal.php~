@@ -1,0 +1,68 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Personal
+ *
+ * @ORM\Table(name="personal", indexes={@ORM\Index(name="IDX_F18A6D847F4026EF", columns={"tipo_personal_fk"}), @ORM\Index(name="IDX_F18A6D847F6ACA99", columns={"nivel_profesional_fk"})})
+ * @ORM\Entity
+ */
+class Personal
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre", type="string", length=50, nullable=false)
+     */
+    private $nombre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="registro_profesional", type="string", length=15, nullable=true)
+     */
+    private $registroProfesional;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="activo", type="boolean", nullable=true)
+     */
+    private $activo;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_personal", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="personal_id_personal_seq", allocationSize=1, initialValue=1)
+     */
+    private $idPersonal;
+
+    /**
+     * @var \AppBundle\Entity\NivelProfesional
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\NivelProfesional")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="nivel_profesional_fk", referencedColumnName="nivel_profesional_id")
+     * })
+     */
+    private $nivelProfesionalFk;
+
+    /**
+     * @var \AppBundle\Entity\TipoPersonal
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\TipoPersonal")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tipo_personal_fk", referencedColumnName="id_tipo_personal")
+     * })
+     */
+    private $tipoPersonalFk;
+
+
+}
+

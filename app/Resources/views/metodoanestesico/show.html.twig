@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Metodoanestesico</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ metodoAnestesico.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Nombrecorto</th>
+                <td>{{ metodoAnestesico.nombreCorto }}</td>
+            </tr>
+            <tr>
+                <th>Idmetodoanestesico</th>
+                <td>{{ metodoAnestesico.idMetodoAnestesico }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('metodoanestesico_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('metodoanestesico_edit', { 'idMetodoAnestesico': metodoAnestesico.idMetodoAnestesico }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

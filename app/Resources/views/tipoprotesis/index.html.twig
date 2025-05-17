@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Tipoproteses list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Idtipoprotesis</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tipoProtesi in tipoProteses %}
+            <tr>
+                <td><a href="{{ path('tipoprotesis_show', { 'idTipoProtesis': tipoProtesi.idTipoProtesis }) }}">{{ tipoProtesi.nombre }}</a></td>
+                <td>{{ tipoProtesi.idTipoProtesis }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('tipoprotesis_show', { 'idTipoProtesis': tipoProtesi.idTipoProtesis }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('tipoprotesis_edit', { 'idTipoProtesis': tipoProtesi.idTipoProtesis }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('tipoprotesis_new') }}">Create a new tipoProtesi</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends 'personal/index.html.twig' %}
+
+{% block title %}Listado de las Trazas{% endblock %}
+
+{% block body %}
+    {#<h1>Trazas list</h1>#}
+
+    {#<table>#}
+    {#<thead>#}
+    {#<tr>#}
+    {#<th>Accionrealizada</th>#}
+    {#<th>Fecha</th>#}
+    {#<th>Hora</th>#}
+    {#<th>Idtraza</th>#}
+    {#<th>Actions</th>#}
+    {#</tr>#}
+    {#</thead>#}
+    {#<tbody>#}
+    {#{% for traza in trazas %}#}
+    {#<tr>#}
+    {#<td><a href="{{ path('traza_show', { 'idTraza': traza.idTraza }) }}">{{ traza.accionRealizada }}</a></td>#}
+    {#<td>{% if traza.fecha %}{{ traza.fecha|date('Y-m-d') }}{% endif %}</td>#}
+    {#<td>{% if traza.hora %}{{ traza.hora|date('H:i:s') }}{% endif %}</td>#}
+    {#<td>{{ traza.idTraza }}</td>#}
+    {#<td>#}
+    {#<ul>#}
+    {#<li>#}
+    {#<a href="{{ path('traza_show', { 'idTraza': traza.idTraza }) }}">show</a>#}
+    {#</li>#}
+    {#</ul>#}
+    {#</td>#}
+    {#</tr>#}
+    {#{% endfor %}#}
+    {#</tbody>#}
+    {#</table>#}
+
+    <div class="data-table-area mg-b-15" style="margin-top: 25px; margin-bottom: 5%">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="sparkline13-list">
+                        <div class="sparkline13-hd">
+                            <div class="main-sparkline13-hd">
+                                <h1>Listado <span class="table-project-n">de</span> Trazas</h1>
+                            </div>
+                        </div>
+                        <div class="sparkline13-graph">
+                            <div class="datatable-dashv1-list custom-datatable-overright">
+                                <div id="impr">
+                                    <table id="table" data-toggle="table" data-pagination="true" data-search="true"
+                                           data-show-columns="true" data-show-pagination-switch="true"
+                                           data-show-refresh="true" data-key-events="true" data-show-toggle="true"
+                                           data-resizable="true" data-cookie="true"
+                                           data-cookie-id-table="saveId" data-show-export="true"
+                                           data-click-to-select="true" data-toolbar="#toolbar">
+                                        <thead>
+                                        <tr>
+                                            <th data-field="name" data-editable="false">Nombre de Usuario</th>
+                                            <th data-field="task2">Nombre del Personal</th>
+                                            <th data-field="id">Fecha</th>
+                                            <th data-field="id2">Hora</th>
+                                            <th data-field="task">Acción Realizada</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for traza in trazas %}
+                                            <tr>
+                                                <td>{{ traza.usuarioFk.username }}</td>
+                                                <td>{{ traza.usuarioFk.personalFk.nombre }}</td>
+                                                <td>{% if traza.fecha %}{{ traza.fecha|date('Y-m-d') }}{% endif %}</td>
+                                                <td>{% if traza.hora %}{{ traza.hora|date('H:i:s') }}{% endif %}</td>
+                                                <td>{{ traza.accionRealizada }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+{% block graficos %}{% endblock %}

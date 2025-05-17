@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Pacientes" table="pacientes">
+    <indexes>
+      <index name="IDX_971B785162106CCD" columns="estado_civil_fk"/>
+      <index name="IDX_971B78519BECB7F7" columns="raza_fk"/>
+      <index name="IDX_971B78513C15DA06" columns="sexo_fk"/>
+      <index name="IDX_971B7851595620F1" columns="provincia_fk"/>
+      <index name="IDX_971B78514F9B1ABE" columns="municipio_fk"/>
+    </indexes>
+    <id name="idPacientes" type="integer" column="id_pacientes">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="pacientes_id_pacientes_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="historiaClinica" type="string" column="historia_clinica" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="ci" type="string" column="ci" length="11" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombre" type="string" column="nombre" length="30" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="primerApellido" type="string" column="primer_apellido" length="30" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="segundoApellido" type="string" column="segundo_apellido" length="30" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="direccion" type="string" column="direccion" length="1024" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="grupoSanguineo" type="string" column="grupo_sanguineo" length="10" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="municipioFk" target-entity="Municipio" fetch="LAZY">
+      <join-columns>
+        <join-column name="municipio_fk" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="provinciaFk" target-entity="Provincia" fetch="LAZY">
+      <join-columns>
+        <join-column name="provincia_fk" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="sexoFk" target-entity="Sexo" fetch="LAZY">
+      <join-columns>
+        <join-column name="sexo_fk" referenced-column-name="id_sexo"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="razaFk" target-entity="Raza" fetch="LAZY">
+      <join-columns>
+        <join-column name="raza_fk" referenced-column-name="id_raza"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="estadoCivilFk" target-entity="EstadoCivil" fetch="LAZY">
+      <join-columns>
+        <join-column name="estado_civil_fk" referenced-column-name="id_estado_civil"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

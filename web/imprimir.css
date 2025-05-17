@@ -1,0 +1,39 @@
+@media print {
+
+    body {
+        align-content: center;
+    }
+
+    table {
+        margin-bottom: 35px;
+    }
+
+    a {
+        visibility: hidden
+    }
+
+    label {
+        visibility: hidden
+    }
+
+    input {
+        visibility: hidden
+    }
+
+    #example1_info {
+        visibility: hidden
+    }
+
+    #acciones {
+        visibility: hidden
+    }
+
+    @page {
+        size: auto;
+        margin: 0mm;
+    }
+
+    #impr {
+        align-content: center;
+    }
+}

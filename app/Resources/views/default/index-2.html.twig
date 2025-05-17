@@ -1,0 +1,490 @@
+{% extends 'base.html.twig' %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/data-table/bootstrap-table.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/data-table/bootstrap-editable.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/editor/select2.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/editor/datetimepicker.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/editor/bootstrap-editable.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/editor/x-editor-style.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="breadcome-area">
+        <div class="container-fluid" style="margin-top: 25px; margin-bottom: 25px">
+            <div class="col-lg-2 col-md-5 col-sm-5 col-xs-11" style="margin-left: 15px">
+                <div class="hpanel shadow-inner hbggreen bg-1 responsive-mg-b-30">
+                    <div class="panel-body">
+                        <div class="text-center content-bg-pro">
+                            <h3>Folio No.</h3>
+                            <p class="text-big font-light">
+                                89-5657
+                            </p>
+                            <small>
+                                Fecha de Elaboracion: 21/1/2020
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                <div class="hpanel widget-int-shape responsive-mg-b-30">
+                    <div class="panel-body">
+                        <div class="stats-title pull-left">
+                            <h4>Tiempo Quirúrgico</h4>
+                        </div>
+                        <div class="stats-icon pull-right">
+                            <i class="educate-icon educate-form"></i>
+                        </div>
+                        <div class="m-t-xl widget-cl-1">
+                            <h1 class="text-success">3h 40min</h1>
+                            <small>
+                                <strong>Fecha/Hora Inicio</strong>
+                                4/11/20 9:00am
+                                <strong>Fecha/Hora Fin</strong>
+                                4/11/20 12:40pm
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="static-table-area" style="margin-bottom: 25px">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="sparkline8-list">
+                                <div class="sparkline8-hd">
+                                    <div class="main-sparkline8-hd">
+                                        <h1>Paciente</h1>
+                                    </div>
+                                </div>
+                                <div class="sparkline8-graph">
+                                    <div class="static-table-list">
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th>CI</th>
+                                                <th>Nombre</th>
+                                                <th>Primer Apellido</th>
+                                                <th>Segundo Apellido</th>
+                                                <th>Edad</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>97081821353</td>
+                                                <td>Lina Beatriz</td>
+                                                <td>Uribazo</td>
+                                                <td>Mallo</td>
+                                                <td>22</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="static-table-area" style=" margin-top: 25px">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="sparkline8-list">
+                                        <div class="sparkline8-hd">
+                                            <div class="main-sparkline8-hd">
+                                                <h1>Personal de la Operación</h1>
+                                            </div>
+                                        </div>
+                                        <div class="sparkline8-graph">
+                                            <div class="static-table-list">
+                                                <table class="table">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>NP</th>
+                                                        <th>Nombre</th>
+                                                        <th>Tipo de Personal</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr>
+                                                        <td>Dr</td>
+                                                        <td>Uribazo Mallo</td>
+                                                        <td>Cirujano</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Dr</td>
+                                                        <td>Uribazo Mallo</td>
+                                                        <td>Cirujano</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Dr</td>
+                                                        <td>Uribazo Mallo</td>
+                                                        <td>Cirujano</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Dr</td>
+                                                        <td>Uribazo Mallo</td>
+                                                        <td>Cirujano</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Dr</td>
+                                                        <td>Uribazo Mallo</td>
+                                                        <td>Cirujano</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Dr</td>
+                                                        <td>Uribazo Mallo</td>
+                                                        <td>Cirujano</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Dr</td>
+                                                        <td>Uribazo Mallo</td>
+                                                        <td>Cirujano</td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="sparkline8-list">
+                                        <div class="sparkline8-hd">
+                                        </div>
+                                        <div class="sparkline8-graph">
+                                            <div class="static-table-list">
+                                                <table class="table">
+                                                    <tr>
+                                                        <td>Codificacion de Operaciones</td>
+                                                        <td>
+                                                            Mayor
+                                                            Electiva
+                                                            Limpia
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Salón</td>
+                                                        <td>A</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Codificación</td>
+                                                        <td>1234567</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Agente Anéstesico</td>
+                                                        <td>11</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Método Anéstesico</td>
+                                                        <td>12</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Diagnóstico Clínico</td>
+                                                        <td>Insuficiente Mitral Severa</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Operación Realizada</td>
+                                                        <td>Sustitución Valvular Mitral con Prótesis mecánica St Jude
+                                                            29
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 25px">
+                        <div class="hpanel email-compose mailbox-view">
+                            <div class="panel-body panel-csm">
+                                <div>
+                                    <h4>Descripción del acto operatorio:</h4>
+                                    <p>Dummy text of the printing and typesetting industry.Lorem Ipsum has been the
+                                        dustrys standard dummy text ever since the 1500s, when an unknown printer took a
+                                        galley of type and scrambled it to make
+                                        a type specimen book. It has survived not only five centuries, but also the leap
+                                        into electronic typesetting, remaining essentially unchanged. It was popularised
+                                        in the 1960s with the release of Letraset sheets
+                                        containing Lorem Ipsum passages, and more
+                                        All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks
+                                        as necessary, making this the first true generator on the Internet. It uses a
+                                        dictionary of over 200 Latin words, combined with
+                                        a handful of model sentence structures, to generate Lorem Ipsum which looks
+                                        reasonable. recently with.
+                                    </p>
+                                    <h4>Accidentes Ocurridos:</h4>
+                                    <p>no</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="program-widget-bc mg-t-30 mg-b-15" style="padding-left: 30px; margin-top: 10px">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                        <div class="hpanel shadow-inner responsive-mg-b-30">
+                            <div class="panel-body">
+                                <div class="table-responsive wd-tb-cr">
+                                    <table class="table table-striped">
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                <span class="text-success font-bold">Tiempo de paro anóxico</span>
+                                            </td>
+                                            <td>64 min</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="text-success font-bold">Tiempo de bypass total</span>
+                                            </td>
+                                            <td>84 min</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="text-success font-bold">Tiempo de bypass parcial</span>
+                                            </td>
+                                            <td>2014 min</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="text-success font-bold">Tiempo de bypass de apoyo</span>
+                                            </td>
+                                            <td>2014 min</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="text-success font-bold">TRM</span>
+                                            </td>
+                                            <td>2014 min</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="sparkline8-list">
+                            <div class="sparkline8-graph">
+                                <div class="static-table-list">
+                                    <table class="table">
+                                        <tbody>
+                                        <tr>
+                                            <td>Suturas Empleadas</td>
+                                            <td>Cirujano</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Drenajes</td>
+                                            <td>Cirujano</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Vía de exteorización del drenaje</td>
+                                            <td>Cirujano</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Otras Operaciones Realizadas</td>
+                                            <td>Cirujano</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Diagnóstico Operatorio</td>
+                                            <td>Cirujano</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Piezas enviadas a Anatomía Patológica</td>
+                                            <td>Cirujano</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Muestras envidas al laboratorio</td>
+                                            <td>Cirujano</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                        <div class="hpanel shadow-inner responsive-mg-b-30">
+                            <div class="panel-body">
+                                <div class="table-responsive wd-tb-cr">
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <th>Cantidad de Compresas utilizadas</th>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                <span class="text-success font-bold">Grandes</span>
+                                            </td>
+                                            <td>64</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="text-success font-bold">Medianas Completas</span>
+                                            </td>
+                                            <td>84</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="text-success font-bold">Chicas</span>
+                                            </td>
+                                            <td>2014</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="static-table-area" style="margin-left: 30px ;margin-top: 25px; margin-bottom: 25px">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="sparkline8-list">
+                            <div class="sparkline8-graph">
+                                <div class="static-table-list">
+                                    <table class="table">
+                                        <thead>
+                                        <th>Líquidos Administrados</th>
+                                        <th>Cantidad(mL)</th>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>Total</td>
+                                            <td>1000</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sangre</td>
+                                            <td>12</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Glóbulos</td>
+                                            <td>12</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Plasma</td>
+                                            <td>12</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Dextrosa al 5%</td>
+                                            <td>12</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Electrolitos Dextran 40</td>
+                                            <td>12</td>
+                                        </tr>
+                                        <tr>
+                                            <td>ClNa</td>
+                                            <td>12</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Cantidad de líquido en el aspirador</td>
+                                            <td>12</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="sparkline8-list">
+                            <div class="sparkline8-graph">
+                                <div class="static-table-list">
+                                    <table class="table">
+                                        <thead>
+                                        <th>Datos del Paciente al salir del salón</th>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>Estado</td>
+                                            <td>Satisfactorio</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Pulso</td>
+                                            <td>71 min</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Reflejos</td>
+                                            <td>12</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sala</td>
+                                            <td>Ped</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Cama</td>
+                                            <td>13</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Respiración</td>
+                                            <td>12</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tensión Arterial</td>
+                                            <td>12</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+        {% block javascripts %}
+            {{ parent() }}
+            <!-- data table JS
+                ============================================ -->
+            <script src="{{ asset('js/data-table/bootstrap-table.js') }}"></script>
+            <script src="{{ asset('js/data-table/tableExport.js') }}"></script>
+            <script src="{{ asset('js/data-table/data-table-active.js') }}"></script>
+            <script src="{{ asset('js/data-table/bootstrap-table-editable.js') }}"></script>
+            <script src="{{ asset('js/data-table/bootstrap-editable.js') }}"></script>
+            <script src="{{ asset('js/data-table/bootstrap-table-resizable.js') }}"></script>
+            <script src="{{ asset('js/data-table/colResizable-1.5.source.js') }}"></script>
+            <script src="{{ asset('js/data-table/bootstrap-table-export.js') }}"></script>
+            <!--  editable JS
+                ============================================ -->
+            <script src="{{ asset('js/editable/jquery.mockjax.js') }}"></script>
+            <script src="{{ asset('js/editable/mock-active.js') }}"></script>
+            <script src="{{ asset('js/editable/select2.js') }}"></script>
+            <script src="{{ asset('js/editable/moment.min.js') }}"></script>
+            <script src="{{ asset('js/editable/bootstrap-datetimepicker.js') }}"></script>
+            <script src="{{ asset('js/editable/bootstrap-editable.js') }}"></script>
+            <script src="{{ asset('js/editable/xediable-active.js') }}"></script>
+            <!-- Chart JS
+                ============================================ -->
+            <script src="{{ asset('js/chart/jquery.peity.min.js') }}"></script>
+            <script src="{{ asset('js/peity/peity-active.js') }}"></script>
+            <!-- tab JS
+                ============================================ -->
+            <script src="{{ asset('js/tab.js') }}"></script>
+        {% endblock %}

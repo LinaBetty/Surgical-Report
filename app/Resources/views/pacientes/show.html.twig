@@ -1,0 +1,89 @@
+{% extends 'personal/index.html.twig' %}
+
+{% block title %}Mostrar Paciente{% endblock %}
+
+{% block body %}
+    <div class="product-status mg-b-15" style="margin-top: 25px ; margin-bottom: 5%">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+                    <div class="product-status-wrap">
+                        {% if app.session.flashBag.has('danger') %}
+                            <div class="alert alert-success">
+                                {% for msg in app.session.flashBag.get('danger') %}
+                                    {{ msg }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        <h4>Mostrando Paciente {{ paciente.nombre }} {{  paciente.primerApellido }}</h4>
+                        {#{{ form_start(delete_form) }}#}
+                        {#<button class="btn btn-primary" type="submit" value="Delete" style="background-color: #006df0; border-color: #006df0; margin-left: 0% !important; margin-bottom: 1%">#}
+                            {#Eliminar Paciente</button>#}
+                        {#{{ form_end(delete_form) }}#}
+                        <div class="asset-inner">
+                            <table>
+                                <tr>
+                                    <th>Historia Cínica</th>
+                                    <td>{{ paciente.historiaClinica }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Carnet de Identidad</th>
+                                    <td>{{ paciente.ci }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <td>{{ paciente.nombre }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Primer Apellido</th>
+                                    <td>{{ paciente.primerApellido }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Segundo Apellido</th>
+                                    <td>{{ paciente.segundoApellido }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Sexo</th>
+                                    <td>{{ paciente.sexoFk.nombre }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Raza</th>
+                                    <td>{{ paciente.razaFk.nombre }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Estado Civil</th>
+                                    <td>{{ paciente.estadoCivilFk.nombre }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Dirección</th>
+                                    <td>{{ paciente.direccion }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Grupo Sanguíneo</th>
+                                    <td>{{ paciente.grupoSanguineo }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Provincia</th>
+                                    <td>{{ paciente.provinciaFk.nombre }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Municipio</th>
+                                    <td>{{ paciente.municipioFk.nombre }}</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="custom-pagination">
+                            <ul class="pagination">
+                                <li class="page-item"><a class="page-link" href="{{ path('pacientes_edit', { 'idPacientes': paciente.idPacientes }) }}">Editar Paciente</a></li>
+                                <li class="page-item"><a class="page-link" href="{{ path('pacientes_new') }}">Agregar Paciente</a></li>
+                                <li class="page-item"><a class="page-link" href="{{ path('pacientes_index') }}">Volver al Listado</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}
+{% block graficos %}{% endblock %}

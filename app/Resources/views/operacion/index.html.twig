@@ -1,0 +1,113 @@
+{% extends 'personal/index.html.twig' %}
+
+{% block title %}Listado de Operaciones{% endblock %}
+
+{% block body %}
+    <!-- Static Table Start -->
+    <div class="data-table-area mg-b-15" style="margin-top: 25px">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="sparkline13-list">
+                        <div class="sparkline13-hd">
+                            <div class="main-sparkline13-hd">
+                                <h1>Listado <span class="table-project-n">de</span> Operaciones</h1>
+                            </div>
+                        </div>
+                        <div class="sparkline13-graph">
+                            <div class="datatable-dashv1-list custom-datatable-overright">
+                                <div class="add-product">
+                                    <a href="{{ path('operacion_new') }}">Añadir Operación</a>
+                                </div>
+                                <table id="table" data-toggle="table" data-pagination="true" data-search="true"
+                                       data-show-columns="true" data-show-pagination-switch="true"
+                                       data-show-refresh="true" data-key-events="true" data-show-toggle="true"
+                                       data-resizable="true" data-cookie="true"
+                                       data-cookie-id-table="saveId" data-show-export="true"
+                                       data-click-to-select="true" data-toolbar="#toolbar">
+                                    <thead>
+                                    <tr>
+                                        <th>Folio</th>
+                                        <th>Paciente</th>
+                                        <th>Salon</th>
+                                        <th>Diagnostico Operatorio</th>
+                                        <th>Fecha Inicio</th>
+                                        <th>Hora Inicio</th>
+                                        <th>Fecha Elaboracion</th>
+                                        <th>Cant. de Modificaciones</th>
+                                        <th data-field="action">Acciones</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% if operacions %}
+                                        {#{% for i in 0..cant %}#}
+                                        {% for operacion in operacions %}
+                                            {% if cantmodificaciones[loop.index - 1] == 0 %}
+                                                <tr>
+                                                    <td>{{ operacion.folio }}</a></td>
+                                                    <td>{{ operacion.pacienteFk.nombre }} {{ operacion.pacienteFk.primerApellido }}</a></td>
+                                                    <td>{{ operacion.salon }}</td>
+                                                    <td>{{ operacion.diagnosticoOperatorio }}</td>
+                                                    <td>{% if operacion.fechaInicio %}{{ operacion.fechaInicio|date('Y-m-d') }}{% endif %}</td>
+                                                    <td>{% if operacion.horaInicio %}{{ operacion.horaInicio|date('H:i:s') }}{% endif %}</td>
+                                                    <td>{% if operacion.fechaElaboracion %}{{ operacion.fechaElaboracion|date('Y-m-d') }}{% endif %}</td>
+                                                    <td>{{ cantmodificaciones[loop.index - 1] }}</td>
+                                                    <td>
+                                                        <a href="{{ path('operacion_show', { 'idOperacion': operacion.idOperacion }) }}">
+                                                            <button data-toggle="tooltip" title="Show"
+                                                                    class="pd-setting-ed"><i class="fa fa-search-plus"
+                                                                                             aria-hidden="true"></i>
+                                                            </button>
+                                                        </a>
+                                                        {% if app.user.personalFk.nombre == operacion.cirujanoFk.nombre %}
+                                                            <a href="{{ path('operacionmodif_new', { 'idOperacion': operacion.idOperacion }) }}">
+                                                                <button data-toggle="tooltip" title="Edit"
+                                                                        class="pd-setting-ed"><i
+                                                                            class="fa fa-pencil-square-o"
+                                                                            aria-hidden="true"></i></button>
+                                                            </a>
+                                                        {% endif %}
+                                                    </td>
+                                                </tr>
+                                            {% endif %}
+                                            {% if cantmodificaciones[loop.index - 1] > 0 %}
+                                                <tr>
+                                                    <td>{{ modificaciones[loop.index - 1].folio }}</a></td>
+                                                    <td>{{ modificaciones[loop.index - 1].pacienteFk.nombre }} {{ modificaciones[loop.index - 1].pacienteFk.primerApellido }}</a></td>
+                                                    <td>{{ modificaciones[loop.index - 1].salon }}</td>
+                                                    <td>{{ modificaciones[loop.index - 1].diagnosticoOperatorio }}</td>
+                                                    <td>{% if modificaciones[loop.index - 1].fechaInicio %}{{ modificaciones[loop.index - 1].fechaInicio|date('Y-m-d') }}{% endif %}</td>
+                                                    <td>{% if modificaciones[loop.index - 1].horaInicio %}{{ modificaciones[loop.index - 1].horaInicio|date('H:i:s') }}{% endif %}</td>
+                                                    <td>{% if modificaciones[loop.index - 1].fechaElaboracion %}{{ modificaciones[loop.index - 1].fechaElaboracion|date('Y-m-d') }}{% endif %}</td>
+                                                    <td>{{ cantmodificaciones[loop.index - 1] }}</td>
+                                                    <td>
+                                                        <a href="{{ path('operacion_show', { 'idOperacion': operacion.idOperacion }) }}">
+                                                            <button data-toggle="tooltip" title="Show"
+                                                                    class="pd-setting-ed"><i class="fa fa-search-plus"
+                                                                                             aria-hidden="true"></i>
+                                                            </button>
+                                                        </a>
+                                                        {% if app.user.personalFk.nombre == operacion.cirujanoFk.nombre %}
+                                                            <a href="{{ path('operacion_edit', { 'idOperacion': operacion.idOperacion }) }}">
+                                                                <button data-toggle="tooltip" title="Edit"
+                                                                        class="pd-setting-ed"><i
+                                                                            class="fa fa-pencil-square-o"
+                                                                            aria-hidden="true"></i></button>
+                                                            </a>
+                                                        {% endif %}
+                                                    </td>
+                                                </tr>
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block graficos %}{% endblock %}

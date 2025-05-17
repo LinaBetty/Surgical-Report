@@ -1,0 +1,1176 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Nueva Operación {% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <!-- chosen CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('css/chosen/bootstrap-chosen.css') }}">
+    <!-- touchspin CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('css/touchspin/jquery.bootstrap-touchspin.min.css') }}">
+    <!-- summernote CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('css/summernote/summernote.css') }}">
+    <!-- morrisjs CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('css/morrisjs/morris.css') }}">
+
+    <!-- datapicker CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('css/datapicker/datepicker3.css') }}">
+    <!-- forms CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('css/form/all-type-forms.css') }}">
+    <!-- dropzone CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('css/dropzone/dropzone.css') }}">
+
+{% endblock %}
+
+{% block body %}
+    {#<h1>Operacion creation</h1>#}
+
+    {#{{ form_start(form) }}#}
+    {#{{ form_widget(form) }}#}
+    {#<input type="submit" value="Create" />#}
+    {#{{ form_end(form) }}#}
+
+    {#<ul>#}
+    {#<li>#}
+    {#<a href="{{ path('operacion_index') }}">Back to the list</a>#}
+    {#</li>#}
+    {#</ul>#}
+    <div class="basic-form-area mg-b-15" style="padding-top: 1%; padding-bottom: 5%">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="sparkline12-list">
+                        <div class="main-sparkline12-hd">
+                            <h1 style="font-size: 200%">Nueva Operación</h1>
+                            <br>
+                            {% if app.session.flashBag.has('danger') %}
+                                <div class="alert alert-danger">
+                                    {% for msg in app.session.flashBag.get('danger') %}
+                                        {{ msg }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="sparkline12-graph">
+                            <div class="basic-login-form-ad">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="all-form-element-inner">
+                                            {{ form_start(form) }}
+                                            {% if form_errors(form)  != '' %}
+                                                <div class="alert alert-danger">
+                                                    {{ form_errors(form) }}
+                                                </div>
+                                            {% endif %}
+                                            <!-- Single pro tab review Start-->
+                                            <div class="single-pro-review-area mt-t-30 mg-b-15">
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                            <div class="product-payment-inner-st">
+                                                                <ul id="myTabedu1" class="tab-review-design">
+                                                                    <li class="active"><a href="#paciente">Paciente</a>
+                                                                    </li>
+                                                                    <li><a href="#personal">Personal</a></li>
+                                                                    <li><a href="#descripciones">Descripciones</a></li>
+                                                                    <li><a href="#otrosdatos">Datos Preoperatorios</a>
+                                                                    </li>
+                                                                    <li><a href="#otrosdatos2">Datos Posoperatorios</a>
+                                                                    </li>
+                                                                    <li><a href="#otrosdatos3">Otros Datos</a>
+                                                                    </li>
+                                                                </ul>
+
+                                                                <div id="myTabContent"
+                                                                     class="tab-content custom-product-edit">
+                                                                    <div class="product-tab-list tab-pane fade active in"
+                                                                         id="paciente">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                                <div class="review-content-section">
+                                                                                    <div id="dropzone1" class="pro-ad">
+
+                                                                                        <div class="row">
+                                                                                            <div class="form-group-inner">
+                                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                    {{ form_label(form.pacienteFk) }}
+                                                                                                    {% if form_errors(form.pacienteFk)  != '' %}
+                                                                                                        <div class="alert alert-danger">
+                                                                                                            {{ form_errors(form.pacienteFk) }}
+                                                                                                        </div>
+                                                                                                    {% endif %}
+                                                                                                    <a href="{{ path('pacientes_new') }}"
+                                                                                                       class="pull-right">+Nuevo
+                                                                                                        Paciente</a>
+                                                                                                    <div class="chosen-select-single mg-b-20">
+                                                                                                        {{ form_widget(form.pacienteFk, {'attr': {'class': 'chosen-select'}}) }}
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="form-group-inner"
+                                                                                                 style="margin-top: -3%">
+                                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                    {{ form_label(form.edadPaciente) }}
+                                                                                                    {% if form_errors(form.edadPaciente)  != '' %}
+                                                                                                        <div class="alert alert-danger">
+                                                                                                            {{ form_errors(form.edadPaciente) }}
+                                                                                                        </div>
+                                                                                                    {% endif %}
+                                                                                                    <div class="touchspin-inner">
+                                                                                                        {{ form_widget(form.edadPaciente, {'attr': {'class': 'touchspin1', 'value':'60', 'onkeypress': 'return soloNumeros(event)','max':'120'}}) }}
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="row"
+                                                                                             style="margin-top: 1%">
+                                                                                            <div class="form-group-inner">
+                                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                    {{ form_label(form.pulso) }}
+                                                                                                    {% if form_errors(form.pulso)  != '' %}
+                                                                                                        <div class="alert alert-danger">
+                                                                                                            {{ form_errors(form.pulso) }}
+                                                                                                        </div>
+                                                                                                    {% endif %}
+                                                                                                    <div class="touchspin-inner">
+                                                                                                        {{ form_widget(form.pulso, {'attr': {'class': 'touchspin1', 'value':'71', 'onkeypress': 'return soloNumeros(event)'}}) }}
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="form-group-inner"
+                                                                                                 style="margin-top: -3%">
+                                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                    {{ form_label(form.tensionArterial) }}
+                                                                                                    {% if form_errors(form.tensionArterial)  != '' %}
+                                                                                                        <div class="alert alert-danger">
+                                                                                                            {{ form_errors(form.tensionArterial) }}
+                                                                                                        </div>
+                                                                                                    {% endif %}
+                                                                                                    {{ form_widget(form.tensionArterial , {'attr': {'class': 'form-control pull' , 'data-mask':'999/99', 'placeholder':'120/80'}}) }}
+                                                                                                    {#<span class="help-block">Solo puede contener 11 caracteres</span>#}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="row"
+                                                                                             style="margin-top: 1.5%">
+                                                                                            <div class="form-group-inner">
+                                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                    {{ form_label(form.salaFk) }}
+                                                                                                    {% if form_errors(form.salaFk)  != '' %}
+                                                                                                        <div class="alert alert-danger">
+                                                                                                            {{ form_errors(form.salaFk) }}
+                                                                                                        </div>
+                                                                                                    {% endif %}
+                                                                                                    <div class="chosen-select-single mg-b-20">
+                                                                                                        {{ form_widget(form.salaFk, {'attr': {'class': 'chosen-select'}}) }}
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="form-group-inner"
+                                                                                                 style="margin-top: -3%">
+                                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                    {{ form_label(form.cama) }}
+                                                                                                    {% if form_errors(form.cama)  != '' %}
+                                                                                                        <div class="alert alert-danger">
+                                                                                                            {{ form_errors(form.cama) }}
+                                                                                                        </div>
+                                                                                                    {% endif %}
+                                                                                                    <div class="touchspin-inner">
+                                                                                                        {{ form_widget(form.cama, {'attr': {'class': 'touchspin1', 'value':'13', 'onkeypress': 'return soloNumeros(event)','max':'300','min':'1'}}) }}
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="row"
+                                                                                             style="margin-top: 1.5%">
+                                                                                            <div class="form-group-inner"
+                                                                                                 style="margin-top: 0%">
+                                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"
+                                                                                                     style="margin-top: 1%">
+                                                                                                    {{ form_label(form.reintervencion) }}
+                                                                                                    {% if form_errors(form.reintervencion)  != '' %}
+                                                                                                        <div class="alert alert-danger">
+                                                                                                            {{ form_errors(form.reintervencion) }}
+                                                                                                        </div>
+                                                                                                    {% endif %}
+                                                                                                </div>
+                                                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"
+                                                                                                     style="margin-top: 0.5%">
+                                                                                                    <div class="bt-df-checkbox pull-left">
+                                                                                                        <div class="i-checks">
+                                                                                                            {{ form_widget(form.reintervencion, {'attr': {'class': 'form-control','require':''}}) }}
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="form-group-inner"
+                                                                                                 style="margin-top: -3%">
+                                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                    {{ form_label(form.numeroCirugiaPrevia) }}
+                                                                                                    {% if form_errors(form.numeroCirugiaPrevia)  != '' %}
+                                                                                                        <div class="alert alert-danger">
+                                                                                                            {{ form_errors(form.numeroCirugiaPrevia) }}
+                                                                                                        </div>
+                                                                                                    {% endif %}
+                                                                                                    <div class="touchspin-inner">
+                                                                                                        {{ form_widget(form.numeroCirugiaPrevia, {'attr': {'class': 'touchspin1', 'value':'0', 'onkeypress': 'return soloNumeros(event)'}}) }}
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="product-tab-list tab-pane fade"
+                                                                         id="personal">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                                <div class="review-content-section">
+                                                                                    <div class="row">
+                                                                                        <div class="form-group-inner">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.cirujanoFk) }}
+                                                                                                {% if form_errors(form.cirujanoFk)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.cirujanoFk) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="chosen-select-single mg-b-20">
+                                                                                                    {{ form_widget(form.cirujanoFk, {'attr': {'class': 'chosen-select'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group-inner"
+                                                                                             style="margin-top: -3%">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.anestesistaFk) }}
+                                                                                                {% if form_errors(form.anestesistaFk)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.anestesistaFk) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="chosen-select-single mg-b-20">
+                                                                                                    {{ form_widget(form.anestesistaFk, {'attr': {'class': 'chosen-select'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row">
+                                                                                        <div class="form-group-inner"
+                                                                                             style="margin-top: -3%">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.primerAyudanteFk) }}
+                                                                                                {% if form_errors(form.primerAyudanteFk)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.primerAyudanteFk) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="chosen-select-single mg-b-20">
+                                                                                                    {{ form_widget(form.primerAyudanteFk, {'attr': {'class': 'chosen-select'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group-inner">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.perfusionistaFk) }}
+                                                                                                {% if form_errors(form.perfusionistaFk)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.perfusionistaFk) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="chosen-select-single mg-b-20">
+                                                                                                    {{ form_widget(form.perfusionistaFk, {'attr': {'class': 'chosen-select'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row">
+                                                                                        <div class="form-group-inner"
+                                                                                             style="margin-top: -3%">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.enfermeraFk) }}
+                                                                                                {% if form_errors(form.enfermeraFk)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.enfermeraFk) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="chosen-select-single mg-b-20">
+                                                                                                    {{ form_widget(form.enfermeraFk, {'attr': {'class': 'chosen-select'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        {#OTROS AYUDANTES#}
+                                                                                        <div class="form-group-inner">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                <div class="chosen-select-single">
+                                                                                                    <label style="font-weight: bold">Ayudantes</label>
+                                                                                                    <select data-placeholder="Seleccione los ayudantes"
+                                                                                                            class="chosen-select"
+                                                                                                            multiple="multiple"
+                                                                                                            tabindex="-1"
+                                                                                                            name="ayudantes[]">
+                                                                                                        {% for personal in personales %}
+                                                                                                            <option value="{{ personal.nombre }}">{{ personal.nombre }} </option>
+                                                                                                        {% endfor %}
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="product-tab-list tab-pane fade"
+                                                                         id="descripciones">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                                <div class="review-content-section">
+                                                                                    <div class="row">
+                                                                                        <div class="form-group-inner">
+                                                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                                                {{ form_label(form.descripcionActoOperatorio) }}
+                                                                                                {% if form_errors(form.descripcionActoOperatorio)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.descripcionActoOperatorio) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="form-group res-mg-t-15">
+                                                                                                    {{ form_widget(form.descripcionActoOperatorio, {'attr': {'class': 'summernote1', 'value':'Ninguno'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group-inner">
+                                                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                                                {{ form_label(form.accidentesOcurridos) }}
+                                                                                                {% if form_errors(form.accidentesOcurridos)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.accidentesOcurridos) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="form-group res-mg-t-15">
+                                                                                                    {{ form_widget(form.accidentesOcurridos, {'attr': {'class': 'summernote1', 'value':'No'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row"
+                                                                                         style="margin-top: 1%">
+                                                                                        <div class="form-group-inner">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.suturasEmpleadas) }}
+                                                                                                {% if form_errors(form.suturasEmpleadas)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.suturasEmpleadas) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="form-group res-mg-t-15">
+                                                                                                    {{ form_widget(form.suturasEmpleadas, {'attr': {'class': 'summernote1', 'value':'Ninguna'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group-inner"
+                                                                                             style="margin-top: -3%">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.drenajes) }}
+                                                                                                {% if form_errors(form.drenajes)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.drenajes) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="form-group res-mg-t-15">
+                                                                                                    {{ form_widget(form.drenajes, {'attr': {'class': 'summernote1', 'value':'Ninguno'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row">
+                                                                                        <div class="form-group-inner">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.viaExteorizacionDrenaje) }}
+                                                                                                {% if form_errors(form.viaExteorizacionDrenaje)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.viaExteorizacionDrenaje) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="form-group res-mg-t-15">
+                                                                                                    {{ form_widget(form.viaExteorizacionDrenaje, {'attr': {'class': 'summernote1', 'value':'Ninguno'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group-inner"
+                                                                                             style="margin-top: -3%">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.otrasOperaciones) }}
+                                                                                                {% if form_errors(form.otrasOperaciones)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.otrasOperaciones) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="form-group res-mg-t-15">
+                                                                                                    {{ form_widget(form.otrasOperaciones, {'attr': {'class': 'summernote1', 'value':'Ninguna'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row">
+                                                                                        <div class="form-group-inner">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.diagnosticoOperatorio) }}
+                                                                                                {% if form_errors(form.diagnosticoOperatorio)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.diagnosticoOperatorio) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="form-group res-mg-t-15">
+                                                                                                    {{ form_widget(form.diagnosticoOperatorio, {'attr': {'class': 'summernote1', 'value':'Ninguno'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group-inner"
+                                                                                             style="margin-top: -3%">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.piezasEnviadasAp) }}
+                                                                                                {% if form_errors(form.piezasEnviadasAp)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.piezasEnviadasAp) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="form-group res-mg-t-15">
+                                                                                                    {{ form_widget(form.piezasEnviadasAp, {'attr': {'class': 'summernote1', 'value':'Ninguna'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row">
+                                                                                        <div class="form-group-inner">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.muestrasEnviadasLab) }}
+                                                                                                {% if form_errors(form.muestrasEnviadasLab)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.muestrasEnviadasLab) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="form-group res-mg-t-15">
+                                                                                                    {{ form_widget(form.muestrasEnviadasLab, {'attr': {'class': 'summernote1', 'value':'Ninguna'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                    <div class="product-tab-list tab-pane fade"
+                                                                         id="otrosdatos">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                                <div class="review-content-section">
+                                                                                    <div class="row">
+                                                                                        <div class="form-group-inner">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.clasifOperTipo1Fk) }}
+                                                                                                {% if form_errors(form.clasifOperTipo1Fk)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.clasifOperTipo1Fk) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="chosen-select-single mg-b-20">
+                                                                                                    {{ form_widget(form.clasifOperTipo1Fk, {'attr': {'class': 'chosen-select'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group-inner"
+                                                                                             style="margin-top: -3%">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.clasifOperTipo2Fk) }}
+                                                                                                {% if form_errors(form.clasifOperTipo2Fk)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.clasifOperTipo2Fk) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="chosen-select-single mg-b-20">
+                                                                                                    {{ form_widget(form.clasifOperTipo2Fk, {'attr': {'class': 'chosen-select'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row">
+                                                                                        <div class="form-group-inner">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.clasifOperTipo3Fk) }}
+                                                                                                {% if form_errors(form.clasifOperTipo3Fk)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.clasifOperTipo3Fk) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="chosen-select-single mg-b-20">
+                                                                                                    {{ form_widget(form.clasifOperTipo3Fk, {'attr': {'class': 'chosen-select'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group-inner"
+                                                                                             style="margin-top: -3%">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.codificacionFk) }}
+                                                                                                {% if form_errors(form.codificacionFk)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.codificacionFk) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="chosen-select-single mg-b-20">
+                                                                                                    {{ form_widget(form.codificacionFk, {'attr': {'class': 'chosen-select'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row">
+                                                                                        <div class="form-group-inner">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.agenteAnestesicoFk) }}
+                                                                                                {% if form_errors(form.agenteAnestesicoFk)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.agenteAnestesicoFk) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="chosen-select-single mg-b-20">
+                                                                                                    {{ form_widget(form.agenteAnestesicoFk, {'attr': {'class': 'chosen-select'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group-inner"
+                                                                                             style="margin-top: -3%">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.tipoProtesisFk) }}
+                                                                                                {% if form_errors(form.tipoProtesisFk)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.tipoProtesisFk) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="chosen-select-single mg-b-20">
+                                                                                                    {{ form_widget(form.tipoProtesisFk, {'attr': {'class': 'chosen-select'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row">
+                                                                                        <div class="form-group-inner">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.metodoAnestesicoFk) }}
+                                                                                                {% if form_errors(form.metodoAnestesicoFk)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.metodoAnestesicoFk) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="chosen-select-single mg-b-20">
+                                                                                                    {{ form_widget(form.metodoAnestesicoFk, {'attr': {'class': 'chosen-select'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group-inner"
+                                                                                             style="margin-top: -3%">
+                                                                                            <div class="form-group-inner">
+                                                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                    {{ form_label(form.salon) }}
+                                                                                                    {% if form_errors(form.salon)  != '' %}
+                                                                                                        <div class="alert alert-danger">
+                                                                                                            {{ form_errors(form.salon) }}
+                                                                                                        </div>
+                                                                                                    {% endif %}
+                                                                                                    <div class="chosen-select-single mg-b-20">
+                                                                                                        {{ form_widget(form.salon, {'attr': {'class': 'chosen-select'}}) }}
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row">
+                                                                                        <div class="form-group-inner">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.diagnosticoClinicoFk) }}
+                                                                                                {% if form_errors(form.diagnosticoClinicoFk)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.diagnosticoClinicoFk) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="chosen-select-single mg-b-20">
+                                                                                                    {{ form_widget(form.diagnosticoClinicoFk, {'attr': {'class': 'chosen-select'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group-inner"
+                                                                                             style="margin-top: -3%">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.operacionRealizadaFk) }}
+                                                                                                {% if form_errors(form.operacionRealizadaFk)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.operacionRealizadaFk) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="chosen-select-single mg-b-20">
+                                                                                                    {{ form_widget(form.operacionRealizadaFk, {'attr': {'class': 'chosen-select'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="product-tab-list tab-pane fade"
+                                                                         id="otrosdatos2">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                                <div class="review-content-section">
+                                                                                    <div class="row">
+                                                                                        <div class="form-group-inner">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.pensamientoAortico) }}
+                                                                                                {% if form_errors(form.pensamientoAortico)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.pensamientoAortico) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="touchspin-inner">
+                                                                                                    {{ form_widget(form.pensamientoAortico, {'attr': {'class': 'touchspin1', 'value':'60', 'onkeypress': 'return soloNumeros(event)'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group-inner"
+                                                                                             style="margin-top: -3%">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.tparoAnoxico) }}
+                                                                                                {% if form_errors(form.tparoAnoxico)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.tparoAnoxico) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="touchspin-inner">
+                                                                                                    {{ form_widget(form.tparoAnoxico, {'attr': {'class': 'touchspin1', 'value':'60', 'onkeypress': 'return soloNumeros(event)'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row"
+                                                                                         style="padding-top: 1%">
+                                                                                        <div class="form-group-inner">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.tbypassTotal) }}
+                                                                                                {% if form_errors(form.tbypassTotal)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.tbypassTotal) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="touchspin-inner">
+                                                                                                    {{ form_widget(form.tbypassTotal, {'attr': {'class': 'touchspin1', 'value':'60', 'onkeypress': 'return soloNumeros(event)'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group-inner"
+                                                                                             style="margin-top: -3%">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.tbypassParcial) }}
+                                                                                                {% if form_errors(form.tbypassParcial)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.tbypassParcial) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="touchspin-inner">
+                                                                                                    {{ form_widget(form.tbypassParcial, {'attr': {'class': 'touchspin1', 'value':'60', 'onkeypress': 'return soloNumeros(event)'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row"
+                                                                                         style="margin-top: 1%">
+                                                                                        <div class="form-group-inner">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.tbypassApoyo) }}
+                                                                                                {% if form_errors(form.tbypassApoyo)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.tbypassApoyo) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="touchspin-inner">
+                                                                                                    {{ form_widget(form.tbypassApoyo, {'attr': {'class': 'touchspin1', 'value':'60', 'onkeypress': 'return soloNumeros(event)'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group-inner"
+                                                                                             style="margin-top: -3%">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.trm) }}
+                                                                                                {% if form_errors(form.trm)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.trm) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="touchspin-inner">
+                                                                                                    {{ form_widget(form.trm, {'attr': {'class': 'touchspin1', 'value':'36', 'onkeypress': 'return soloNumeros(event)'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row"
+                                                                                         style="margin-top: 1%">
+                                                                                        <div class="form-group-inner">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.cantLiquidoAspirador) }}
+                                                                                                {% if form_errors(form.cantLiquidoAspirador)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.cantLiquidoAspirador) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="touchspin-inner">
+                                                                                                    {{ form_widget(form.cantLiquidoAspirador, {'attr': {'class': 'touchspin1', 'value':'100', 'onkeypress': 'return soloNumeros(event)'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group-inner"
+                                                                                             style="margin-top: -3%">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.sangre) }}
+                                                                                                {% if form_errors(form.sangre)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.sangre) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="touchspin-inner">
+                                                                                                    {{ form_widget(form.sangre, {'attr': {'class': 'touchspin1', 'value':'100', 'onkeypress': 'return soloNumeros(event)'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row"
+                                                                                         style="margin-top: 1%">
+                                                                                        <div class="form-group-inner">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.globulos) }}
+                                                                                                {% if form_errors(form.globulos)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.globulos) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="touchspin-inner">
+                                                                                                    {{ form_widget(form.globulos, {'attr': {'class': 'touchspin1', 'value':'100', 'onkeypress': 'return soloNumeros(event)'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group-inner"
+                                                                                             style="margin-top: -3%">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.plasma) }}
+                                                                                                {% if form_errors(form.plasma)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.plasma) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="touchspin-inner">
+                                                                                                    {{ form_widget(form.plasma, {'attr': {'class': 'touchspin1', 'value':'100', 'onkeypress': 'return soloNumeros(event)'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row"
+                                                                                         style="margin-top: 1%">
+                                                                                        <div class="form-group-inner">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.dextrosa) }}
+                                                                                                {% if form_errors(form.dextrosa)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.dextrosa) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="touchspin-inner">
+                                                                                                    {{ form_widget(form.dextrosa, {'attr': {'class': 'touchspin1', 'value':'100', 'onkeypress': 'return soloNumeros(event)'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group-inner"
+                                                                                             style="margin-top: -3%">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.electrolitosDextran) }}
+                                                                                                {% if form_errors(form.electrolitosDextran)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.electrolitosDextran) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="touchspin-inner">
+                                                                                                    {{ form_widget(form.electrolitosDextran, {'attr': {'class': 'touchspin1', 'value':'100', 'onkeypress': 'return soloNumeros(event)'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row"
+                                                                                         style="margin-top: 1%">
+                                                                                        <div class="form-group-inner">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.clna) }}
+                                                                                                {% if form_errors(form.clna)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.clna) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="touchspin-inner">
+                                                                                                    {{ form_widget(form.clna, {'attr': {'class': 'touchspin1', 'value':'100', 'onkeypress': 'return soloNumeros(event)'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group-inner"
+                                                                                             style="margin-top: -3%">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.cantCompresasG) }}
+                                                                                                {% if form_errors(form.cantCompresasG)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.cantCompresasG) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="touchspin-inner">
+                                                                                                    {{ form_widget(form.cantCompresasG, {'attr': {'class': 'touchspin1', 'value':'100', 'onkeypress': 'return soloNumeros(event)'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row"
+                                                                                         style="margin-top: 1%">
+                                                                                        <div class="form-group-inner">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.cantCompresasMc) }}
+                                                                                                {% if form_errors(form.cantCompresasMc)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.cantCompresasMc) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="touchspin-inner">
+                                                                                                    {{ form_widget(form.cantCompresasMc, {'attr': {'class': 'touchspin1', 'value':'100', 'onkeypress': 'return soloNumeros(event)'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group-inner"
+                                                                                             style="margin-top: -3%">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.cantCompresasCh) }}
+                                                                                                {% if form_errors(form.cantCompresasCh)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.cantCompresasCh) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="touchspin-inner">
+                                                                                                    {{ form_widget(form.cantCompresasCh, {'attr': {'class': 'touchspin1', 'value':'100', 'onkeypress': 'return soloNumeros(event)'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row"
+                                                                                         style="margin-top: 1%">
+                                                                                        <div class="form-group-inner">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.totalLiquidoAdministrado) }}
+                                                                                                {% if form_errors(form.totalLiquidoAdministrado)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.totalLiquidoAdministrado) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="touchspin-inner">
+                                                                                                    {{ form_widget(form.totalLiquidoAdministrado, {'attr': {'class': 'touchspin1', 'value':'1000', 'onkeypress': 'return soloNumeros(event)'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="product-tab-list tab-pane fade"
+                                                                         id="otrosdatos3">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                                <div class="review-content-section">
+                                                                                    <div class="row"
+                                                                                         style="margin-top: 1%">
+                                                                                        <div class="form-group-inner">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.estadoSalirSalonFk) }}
+                                                                                                {% if form_errors(form.estadoSalirSalonFk)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.estadoSalirSalonFk) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="chosen-select-single mg-b-20">
+                                                                                                    {{ form_widget(form.estadoSalirSalonFk, {'attr': {'class': 'chosen-select'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group-inner"
+                                                                                             style="margin-top: -3%">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.tiempoQuirurgico) }}
+                                                                                                {% if form_errors(form.tiempoQuirurgico)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.tiempoQuirurgico) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="bfh-timepicker">
+                                                                                                    {{ form_widget(form.tiempoQuirurgico, {'attr': {'class': 'form-control timepicker'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row">
+                                                                                        <div class="form-group-inner">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.fechaInicio) }}
+                                                                                                {% if form_errors(form.fechaInicio)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.fechaInicio) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="input-group date">
+                                                            <span class="input-group-addon"><i
+                                                                        class="fa fa-calendar"></i></span>
+                                                                                                    {{ form_widget(form.fechaInicio, {'attr': {'class': 'form-control', 'type':'text'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group-inner"
+                                                                                             style="margin-top: -3%">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.fechaFin) }}
+                                                                                                {% if form_errors(form.fechaFin)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.fechaFin) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="input-group date">
+                                                            <span class="input-group-addon"><i
+                                                                        class="fa fa-calendar"></i></span>
+                                                                                                    {{ form_widget(form.fechaFin, {'attr': {'class': 'form-control', 'type':'text'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row"
+                                                                                         style="margin-top: 1.5%">
+                                                                                        <div class="form-group-inner">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.horaInicio) }}
+                                                                                                {% if form_errors(form.horaInicio)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.horaInicio) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="bfh-timepicker">
+                                                                                                    {{ form_widget(form.horaInicio, {'attr': {'class': 'form-control timepicker'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group-inner"
+                                                                                             style="margin-top: -3%">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.horaFin) }}
+                                                                                                {% if form_errors(form.horaFin)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.horaFin) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="bfh-timepicker">
+                                                                                                    {{ form_widget(form.horaFin, {'attr': {'class': 'form-control timepicker'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row"
+                                                                                         style="margin-top: 1%">
+                                                                                        <div class="form-group-inner">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.respiracionFk) }}
+                                                                                                {% if form_errors(form.respiracionFk)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.respiracionFk) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="chosen-select-single mg-b-20">
+                                                                                                    {{ form_widget(form.respiracionFk, {'attr': {'class': 'chosen-select'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group-inner"
+                                                                                             style="margin-top: -3%">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.reflejosFk) }}
+                                                                                                {% if form_errors(form.reflejosFk)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.reflejosFk) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="chosen-select-single mg-b-20">
+                                                                                                    {{ form_widget(form.reflejosFk, {'attr': {'class': 'chosen-select'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row"
+                                                                                         style="margin-top: 0%">
+                                                                                        <div class="form-group-inner">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.noCardioplegias) }}
+                                                                                                {% if form_errors(form.noCardioplegias)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.noCardioplegias) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="touchspin-inner">
+                                                                                                    {{ form_widget(form.noCardioplegias, {'attr': {'class': 'touchspin1', 'value':'0', 'onkeypress': 'return soloNumeros(event)'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group-inner"
+                                                                                             style="margin-top: 0%">
+                                                                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"
+                                                                                                 style="margin-top: 1%">
+                                                                                                {{ form_label(form.instrumentalCompleto) }}
+                                                                                                {% if form_errors(form.instrumentalCompleto)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.instrumentalCompleto) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                            </div>
+                                                                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"
+                                                                                                 style="margin-top: 0.5%">
+                                                                                                <div class="bt-df-checkbox pull-left">
+                                                                                                    <div class="i-checks">
+                                                                                                        {{ form_widget(form.instrumentalCompleto, {'attr': {'class': 'form-control'}}) }}
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row"
+                                                                                         style="margin-top: 1%">
+                                                                                        <div class="form-group-inner">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.fechaElaboracion) }}
+                                                                                                {% if form_errors(form.fechaElaboracion)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.fechaElaboracion) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                <div class="input-group date">
+                                                            <span class="input-group-addon"><i
+                                                                        class="fa fa-calendar"></i></span>
+                                                                                                    {{ form_widget(form.fechaElaboracion, {'attr': {'class': 'form-control', 'type':'text'}}) }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group-inner"
+                                                                                             style="margin-top: -3%">
+                                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                                                {{ form_label(form.folio) }}
+                                                                                                {% if form_errors(form.folio)  != '' %}
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        {{ form_errors(form.folio) }}
+                                                                                                    </div>
+                                                                                                {% endif %}
+                                                                                                {{ form_widget(form.folio, {'attr': {'class': 'form-control', 'value':folio}}) }}
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group-inner" style="margin-right: 1%">
+                                        <div class="login-btn-inner">
+                                            <div class="row">
+                                                <div class="col-lg-3"></div>
+                                                <div class="col-lg-9">
+                                                    <div class="login-horizental cancel-wp pull-right form-bc-ele">
+                                                        <button class="btn btn-white"
+                                                                href=""><a
+                                                                    href="{{ path('operacion_index') }}">Cancelar</a>
+                                                        </button>
+                                                        <button class="btn btn-sm btn-primary login-submit-cs"
+                                                                type="submit" value="Create">Guardar
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{ form_end(form) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+    {% block javascripts %}
+        {{ parent() }}
+        <!-- chosen JS
+            ============================================ -->
+        <script src="{{ asset('js/chosen/chosen.jquery.js') }}"></script>
+        <script src="{{ asset('js/chosen/chosen-active.js') }}"></script>
+        <!-- select2 JS
+           ============================================ -->
+        <script src="{{ asset('js/select2/select2.full.min.js') }}"></script>
+        <script src="{{ asset('js/select2/select2-active.js') }}"></script>
+        <!-- touchspin JS
+           ============================================ -->
+        <script src="{{ asset('js/touchspin/jquery.bootstrap-touchspin.min.js') }}"></script>
+        <script src="{{ asset('js/touchspin/touchspin-active.js') }}"></script>
+        <!-- summernote JS
+            ============================================ -->
+        <script src="{{ asset('js/summernote/summernote.min.js') }}"></script>
+        <script src="{{ asset('js/summernote/summernote-active.js') }}"></script>
+
+        <script src="{{ asset('js/morrisjs/morris.js') }}"></script>
+        <script src="{{ asset('js/morrisjs/home3-active.js') }}"></script>
+        <!-- datapicker JS
+		============================================ -->
+        <script src="{{ asset('js/datapicker/bootstrap-datepicker.js') }}"></script>
+        <script src="{{ asset('js/datapicker/datepicker-active.js') }}"></script>
+        <!-- input-mask JS
+		============================================ -->
+        <script src="{{ asset('js/input-mask/jasny-bootstrap.min.js') }}"></script>
+        <!-- form validate JS
+		============================================ -->
+        <script src="{{ asset('js/form-validation/jquery.form.min.js') }}"></script>
+        <script src="{{ asset('js/form-validation/jquery.validate.min.js') }}"></script>
+        <script src="{{ asset('js/form-validation/form-active.js') }}"></script>
+        <!-- dropzone JS
+            ============================================ -->
+        <script src="{{ asset('js/dropzone/dropzone.js') }}"></script>
+        <!-- icheck JS
+		============================================ -->
+        <script src="{{ asset('js/icheck/icheck.min.js') }}"></script>
+        <script src="{{ asset('js/icheck/icheck-active.js') }}"></script>
+
+    {% endblock %}
+{% block graficos %}{% endblock %}

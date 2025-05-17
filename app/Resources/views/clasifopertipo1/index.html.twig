@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Clasifopertipo1s list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Idclasifopertipo1</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for clasifOperTipo1 in clasifOperTipo1s %}
+            <tr>
+                <td><a href="{{ path('clasifopertipo1_show', { 'idClasifOperTipo1': clasifOperTipo1.idClasifOperTipo1 }) }}">{{ clasifOperTipo1.nombre }}</a></td>
+                <td>{{ clasifOperTipo1.idClasifOperTipo1 }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('clasifopertipo1_show', { 'idClasifOperTipo1': clasifOperTipo1.idClasifOperTipo1 }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('clasifopertipo1_edit', { 'idClasifOperTipo1': clasifOperTipo1.idClasifOperTipo1 }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('clasifopertipo1_new') }}">Create a new clasifOperTipo1</a>
+        </li>
+    </ul>
+{% endblock %}

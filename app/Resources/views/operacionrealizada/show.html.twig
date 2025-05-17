@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Operacionrealizada</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ operacionRealizada.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Idoperacionrealizada</th>
+                <td>{{ operacionRealizada.idOperacionRealizada }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('operacionrealizada_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('operacionrealizada_edit', { 'idOperacionRealizada': operacionRealizada.idOperacionRealizada }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

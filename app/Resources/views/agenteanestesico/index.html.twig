@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Agenteanestesicos list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Idagenteanestesico</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for agenteAnestesico in agenteAnestesicos %}
+            <tr>
+                <td><a href="{{ path('agenteanestesico_show', { 'idAgenteAnestesico': agenteAnestesico.idAgenteAnestesico }) }}">{{ agenteAnestesico.nombre }}</a></td>
+                <td>{{ agenteAnestesico.idAgenteAnestesico }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('agenteanestesico_show', { 'idAgenteAnestesico': agenteAnestesico.idAgenteAnestesico }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('agenteanestesico_edit', { 'idAgenteAnestesico': agenteAnestesico.idAgenteAnestesico }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('agenteanestesico_new') }}">Create a new agenteAnestesico</a>
+        </li>
+    </ul>
+{% endblock %}

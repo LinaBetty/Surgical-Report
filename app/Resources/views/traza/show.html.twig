@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Traza</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Accionrealizada</th>
+                <td>{{ traza.accionRealizada }}</td>
+            </tr>
+            <tr>
+                <th>Fecha</th>
+                <td>{% if traza.fecha %}{{ traza.fecha|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Hora</th>
+                <td>{% if traza.hora %}{{ traza.hora|date('H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Idtraza</th>
+                <td>{{ traza.idTraza }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('traza_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}
+{% block graficos %}{% endblock %}
